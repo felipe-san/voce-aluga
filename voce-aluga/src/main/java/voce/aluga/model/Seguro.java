@@ -5,5 +5,5 @@ public class Seguro {
     private String tipoSeguro;
     private float valor;
     private String cobertura;
-    public text descricao;
+    public String descricao;
 }

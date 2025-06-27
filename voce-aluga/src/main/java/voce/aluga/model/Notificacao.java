@@ -6,6 +6,6 @@ public class Notificacao {
     private int id;
     private int clienteId;
     private String tipoNotificacao;
-    private text mensagem;
+    private String mensagem;
     private Date dataEnvio;
 }

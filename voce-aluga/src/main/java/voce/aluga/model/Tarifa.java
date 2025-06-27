@@ -4,5 +4,5 @@ public class Tarifa {
     private int id;
     private String tipoTarifa;
     private float valor;
-    public text descricao;
+    public String descricao;
 }

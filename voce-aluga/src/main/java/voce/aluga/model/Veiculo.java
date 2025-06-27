@@ -11,6 +11,6 @@ public class Veiculo {
     public int capacidadeTanque;
     public int consumoMedio;
     private Date dataProximaManutencao;
-    private text historicoManutencao;
+    private String historicoManutencao;
     private String status;
 }
