@@ -1,0 +1,52 @@
+package voce.aluga.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import voce.aluga.model.Contrato;
+import voce.aluga.service.ContratoService;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/contratos")
+public class ContratoController {
+
+    @Autowired
+    private ContratoService contratoService;
+
+    @PostMapping
+    public Contrato criarContrato(@RequestBody Contrato contrato) {
+        return contratoService.salvar(contrato);
+    }
+
+    @GetMapping
+    public List<Contrato> listarContratos() {
+        return contratoService.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Contrato> buscarContrato(@PathVariable int id) {
+        return contratoService.buscarPorId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarContrato(@PathVariable int id) {
+        contratoService.deletar(id);
+    }
+
+    @GetMapping("/{id}/gerar")
+    public String gerarContrato(@PathVariable int id) {
+        return contratoService.gerarContrato(id);
+    }
+
+    @PostMapping("/{id}/encerrar")
+    public void encerrarContrato(@PathVariable int id) {
+        contratoService.encerrarContrato(id);
+    }
+
+    @PostMapping("/{id}/desconto")
+    public float aplicarDesconto(@PathVariable int id, @RequestParam float valor) {
+        return contratoService.aplicarDesconto(id, valor);
+    }
+}
