@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import voce.aluga.model.Auditoria;
 import voce.aluga.service.AuditoriaService;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/auditorias")
@@ -15,23 +15,41 @@ public class AuditoriaController {
     @Autowired
     private AuditoriaService auditoriaService;
 
-    @PostMapping
-    public Auditoria criarAuditoria(@RequestBody Auditoria auditoria) {
-        return auditoriaService.salvar(auditoria);
+    @PostMapping("/auditoria/criar/{id}")
+    public Object criarAuditoria(@RequestBody Auditoria auditoria) {
+        try {
+            return auditoriaService.salvar(auditoria);
+        } catch (Exception e) {
+            return "Erro ao criar auditoria: " + e.getMessage();
+        }
     }
 
-    @GetMapping
+    @GetMapping("/auditoria/lista")
     public List<Auditoria> listarTodas() {
-        return auditoriaService.listarTodas();
+        try {
+            return auditoriaService.listarTodas();
+        } catch (Exception e) {
+            System.out.println("Erro ao listar auditorias: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
-    @GetMapping("/{id}")
-    public Optional<Auditoria> buscarPorId(@PathVariable int id) {
-        return auditoriaService.buscarPorId(id);
+    @GetMapping("/auditoria/busca/{id}")
+    public Object buscarPorId(@PathVariable int id) {
+        try {
+            return auditoriaService.buscarPorId(id);
+        } catch (Exception e) {
+            return "Erro ao buscar auditoria: " + e.getMessage();
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public void deletarAuditoria(@PathVariable int id) {
-        auditoriaService.deletar(id);
+    @DeleteMapping("/auditoria/deletar/{id}")
+    public String deletarAuditoria(@PathVariable int id) {
+        try {
+            auditoriaService.deletar(id);
+            return "Auditoria deletada com sucesso.";
+        } catch (Exception e) {
+            return "Erro ao deletar auditoria: " + e.getMessage();
+        }
     }
 }

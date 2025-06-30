@@ -7,9 +7,17 @@ public class Devolucao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(length = 50) 
     private int veiculoId;
+
+    @Column(length = 50) 
     private int reservaId;
+
+    @Column(nullable = false, length = 50) 
     private String status;
+
+    @Column(length = 50) 
     private boolean avarias;
 
     @Column(columnDefinition = "TEXT")

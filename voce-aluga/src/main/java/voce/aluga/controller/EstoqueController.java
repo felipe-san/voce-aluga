@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import voce.aluga.model.Estoque;
 import voce.aluga.service.EstoqueService;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/estoques")
@@ -15,39 +15,68 @@ public class EstoqueController {
     @Autowired
     private EstoqueService estoqueService;
 
-    @PostMapping
-    public Estoque criar(@RequestBody Estoque estoque) {
-        return estoqueService.salvar(estoque);
+    @PostMapping("/estoque/criar/{id}")
+    public Object criar(@RequestBody Estoque estoque) {
+        try {
+            return estoqueService.salvar(estoque);
+        } catch (Exception e) {
+            return "Erro ao criar estoque: " + e.getMessage();
+        }
     }
 
-    @GetMapping
+    @GetMapping("/estoque/lista")
     public List<Estoque> listarTodos() {
-        return estoqueService.listarTodos();
+        try {
+            return estoqueService.listarTodos();
+        } catch (Exception e) {
+            System.out.println("Erro ao listar estoques: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
-    @GetMapping("/{id}")
-    public Optional<Estoque> buscarPorId(@PathVariable int id) {
-        return estoqueService.buscarPorId(id);
+    @GetMapping("/estoque/{id}")
+    public Object buscarPorId(@PathVariable int id) {
+        try {
+            return estoqueService.buscarPorId(id);
+        } catch (Exception e) {
+            return "Erro ao buscar estoque: " + e.getMessage();
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public void deletar(@PathVariable int id) {
-        estoqueService.deletar(id);
+    @DeleteMapping("/estoque/deletar/{id}")
+    public String deletar(@PathVariable int id) {
+        try {
+            estoqueService.deletar(id);
+            return "Estoque deletado com sucesso.";
+        } catch (Exception e) {
+            return "Erro ao deletar estoque: " + e.getMessage();
+        }
     }
 
-    @GetMapping("/{id}/disponiveis")
-    public List<Integer> consultarVeiculosDisponiveis(@PathVariable int id) {
-        return estoqueService.consultarVeiculosDisponiveis(id);
+    @GetMapping("/estoque/{id}/disponiveis")
+    public Object consultarVeiculosDisponiveis(@PathVariable int id) {
+        try {
+            return estoqueService.consultarVeiculosDisponiveis(id);
+        } catch (Exception e) {
+            return "Erro ao consultar veículos disponíveis: " + e.getMessage();
+        }
     }
 
-    @GetMapping("/{id}/manutencao")
-    public List<Integer> veiculosManutencao(@PathVariable int id) {
-        return estoqueService.verificarVeiculoManutencao(id);
+    @GetMapping("/estoque/{id}/manutencao")
+    public Object veiculosManutencao(@PathVariable int id) {
+        try {
+            return estoqueService.verificarVeiculoManutencao(id);
+        } catch (Exception e) {
+            return "Erro ao consultar veículos em manutenção: " + e.getMessage();
+        }
     }
 
-    @GetMapping("/{id}/alocados")
-    public List<Integer> veiculosAlocados(@PathVariable int id) {
-        return estoqueService.verificarVeiculosAlocados(id);
+    @GetMapping("/estoque/{id}/alocados")
+    public Object veiculosAlocados(@PathVariable int id) {
+        try {
+            return estoqueService.verificarVeiculosAlocados(id);
+        } catch (Exception e) {
+            return "Erro ao consultar veículos alocados: " + e.getMessage();
+        }
     }
-} 
-
+}

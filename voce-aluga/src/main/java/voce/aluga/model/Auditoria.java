@@ -8,14 +8,22 @@ public class Auditoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sistemaId;
+
+    @Column(nullable = false, length = 255) 
     private String procedimento;
-    @Lob
+
+    @Column(length = 255) 
     private String historico;
+
+    @Column(length = 255) 
     private LocalDate dataAuditoria;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @Column(length = 255) 
     private Usuario usuario;
 
     public int getId() { 

@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import voce.aluga.model.Contrato;
 import voce.aluga.service.ContratoService;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/contratos")
@@ -15,38 +15,69 @@ public class ContratoController {
     @Autowired
     private ContratoService contratoService;
 
-    @PostMapping
-    public Contrato criarContrato(@RequestBody Contrato contrato) {
-        return contratoService.salvar(contrato);
+    @PostMapping("/contrato/criar")
+    public Object criarContrato(@RequestBody Contrato contrato) {
+        try {
+            return contratoService.salvar(contrato);
+        } catch (Exception e) {
+            return "Erro ao criar contrato: " + e.getMessage();
+        }
     }
 
-    @GetMapping
+    @GetMapping("/contrato/lista")
     public List<Contrato> listarContratos() {
-        return contratoService.listarTodos();
+        try {
+            return contratoService.listarTodos();
+        } catch (Exception e) {
+            System.out.println("Erro ao listar contratos: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
-    @GetMapping("/{id}")
-    public Optional<Contrato> buscarContrato(@PathVariable int id) {
-        return contratoService.buscarPorId(id);
+    @GetMapping("/contrato/busca/{id}")
+    public Object buscarContrato(@PathVariable int id) {
+        try {
+            return contratoService.buscarPorId(id);    
+        } catch (Exception e) {
+            return "Erro ao buscar contrato: " + e.getMessage();
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public void deletarContrato(@PathVariable int id) {
-        contratoService.deletar(id);
+    @DeleteMapping("/contrato/deletar/{id}")
+    public String deletarContrato(@PathVariable int id) {
+        try {
+            contratoService.deletar(id);
+            return "Contrato deletado com sucesso.";
+        } catch (Exception e) {
+            return "Erro ao deletar contrato: " + e.getMessage();
+        }
     }
 
-    @GetMapping("/{id}/gerar")
+    @GetMapping("/contrato/gerar/{id}")
     public String gerarContrato(@PathVariable int id) {
-        return contratoService.gerarContrato(id);
+        try {
+            return contratoService.gerarContrato(id);
+        } catch (Exception e) {
+            return "Erro ao gerar contrato: " + e.getMessage();
+        }
     }
 
-    @PostMapping("/{id}/encerrar")
-    public void encerrarContrato(@PathVariable int id) {
-        contratoService.encerrarContrato(id);
+    @PostMapping("/contrato/encerrar/{id}")
+    public String encerrarContrato(@PathVariable int id) {
+        try {
+            contratoService.encerrarContrato(id);
+            return "Contrato encerrado com sucesso.";
+        } catch (Exception e) {
+            return "Erro ao encerrar contrato: " + e.getMessage();
+        }
     }
 
-    @PostMapping("/{id}/desconto")
-    public float aplicarDesconto(@PathVariable int id, @RequestParam float valor) {
-        return contratoService.aplicarDesconto(id, valor);
+    @PostMapping("/contrato/desconto/{id}")
+    public Object aplicarDesconto(@PathVariable int id, @RequestParam float valor) {
+        try {
+            return contratoService.aplicarDesconto(id, valor);
+        } catch (Exception e) {
+            return "Erro ao aplicar desconto: " + e.getMessage();
+        }
     }
 }

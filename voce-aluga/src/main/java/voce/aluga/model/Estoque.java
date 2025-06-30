@@ -9,19 +9,27 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false, unique = true, length = 255)
     private int filialId;
+
+    @Column(nullable = false, unique = true, length = 255)
     private int totalVeiculos;
 
     @ElementCollection
+    @Column(nullable = false, unique = true, length = 255)    
     private List<Integer> veiculosDisponiveis;
 
     @ElementCollection
+    @Column(nullable = false, unique = true, length = 255)
     private List<Integer> veiculosManutencao;
 
     @ElementCollection
+    @Column(nullable = false, unique = true, length = 255)
     private List<Integer> veiculosAlocados;
 
     @ElementCollection
+    @Column(nullable = false, unique = true, length = 255)
     private List<Integer> veiculosAlugados;
 
 

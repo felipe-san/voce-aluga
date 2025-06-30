@@ -7,10 +7,20 @@ public class Cliente extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false, length = 50) 
     private String documento;
+
+    @Column(length = 255)
     private String fidelidade;
+
+    @Column(length = 255) 
     private boolean listaSuja;
+
+    @Column(nullable = false, unique = true, length = 14)
     private String cpf;
+
+    @Column(nullable = false, unique = true, length = 20)
     private String cnh;
 
     public Long getId() {

@@ -8,8 +8,13 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true, length = 255)
     private String nome;
+
+    @Column(nullable = false, unique = true, length = 255)
     private String endereco;
+
+    @Column(nullable = false, unique = true, length = 255)
     private String email;
 
     public Usuario() {}

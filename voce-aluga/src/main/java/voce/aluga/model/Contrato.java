@@ -10,11 +10,16 @@ public class Contrato {
     private int id;
 
     @Temporal(TemporalType.DATE)
+    @Column(length = 50) 
     private Date dataAssinatura;
+
+    @Column(length = 255) 
     private float valor;
 
     @Column(columnDefinition = "TEXT")
     private String termos;
+
+    @Column(length = 50) 
     private String status;
 
     public int getId() {
