@@ -17,7 +17,7 @@ public class ClienteController extends UsuarioController {
     @Autowired
     private ClienteService clienteService;
 
-    @PostMapping("/cliente/cadrastrar")
+    @PostMapping("/cliente/cadastrar")
     public String cadastrarCliente(@ModelAttribute Cliente cliente, Model model) {
         try {
             Cliente novoCliente = clienteService.salvar(cliente);

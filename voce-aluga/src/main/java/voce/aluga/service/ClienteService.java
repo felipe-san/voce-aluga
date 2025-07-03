@@ -22,11 +22,11 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    public Optional<Cliente> buscarPorId(int id) {
+    public Optional<Cliente> buscarPorId(long id) {
         return clienteRepository.findById(id);
     }
 
-    public void deletar(int id) {
+    public void deletar(long id) {
         clienteRepository.deleteById(id);
     }
 

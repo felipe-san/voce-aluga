@@ -1,20 +1,9 @@
 package voce.aluga.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 @Entity
-public class Administrador extends Usuario{
-   
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    
-    public Long getId() { 
-        return (long) id; 
-    }
-
-    public void setId(int id) { 
-        this.id = id; }
+public class Administrador extends Usuario {
 
     public boolean validarCadastro(Cliente cliente) {
         return cliente != null && cliente.getCpf() != null && cliente.getCnh() != null;
@@ -35,5 +24,4 @@ public class Administrador extends Usuario{
     public void aprovarRequisicao(String requisicao) {
         System.out.println("Requisição aprovada: " + requisicao);
     }
-   
 }
