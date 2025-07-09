@@ -9,6 +9,7 @@ C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\ListaSuja.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\repository\ContratoRepository.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\repository\EstoqueRepository.java
+C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\service\ReservaService.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Auditoria.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\repository\DevolucaoRepository.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\controller\ContratoController.java
@@ -30,6 +31,7 @@ C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Fidelidade.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Matriz.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\PagamentoPix.java
+C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\repository\ReservaRepository.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Pagamento.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Usuario.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Cliente.java
@@ -43,6 +45,7 @@ C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Sistema.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Devolucao.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\controller\DevolucaoController.java
+C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\controller\ReservaController.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\controller\AuditoriaController.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\repository\AuditoriaRepository.java
 C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\src\main\java\voce\aluga\service\DevolucaoService.java

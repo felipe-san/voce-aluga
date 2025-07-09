@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="voce.aluga.testes.ClienteTests" time="34.891" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="voce.aluga.testes.ReservaTests" time="1.667" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -47,7 +47,7 @@
     <property name="localRepository" value="C:\Users\Maria\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\Maria\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="com.zaxxer.hikari.pool_number" value="2"/>
     <property name="java.version" value="21.0.1"/>
     <property name="user.dir" value="C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga"/>
     <property name="os.arch" value="amd64"/>
@@ -64,8 +64,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testeClienteComListaSuja" classname="voce.aluga.testes.ClienteTests" time="3.486">
-    <system-out><![CDATA[
+  <testcase name="testeSalvarReserva" classname="voce.aluga.testes.ReservaTests" time="0.635">
+    <system-out><![CDATA[2025-07-09T19:26:07.805-03:00  INFO 18316 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [voce.aluga.testes.ReservaTests]: ReservaTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-07-09T19:26:07.837-03:00  INFO 18316 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration voce.aluga.Main for test class voce.aluga.testes.ReservaTests
+
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -74,87 +76,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2025-07-09T19:25:42.249-03:00  INFO 18316 --- [           main] voce.aluga.testes.ClienteTests           : Starting ClienteTests using Java 21.0.1 with PID 18316 (started by Maria in C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga)
-2025-07-09T19:25:42.252-03:00  INFO 18316 --- [           main] voce.aluga.testes.ClienteTests           : The following 1 profile is active: "test"
-2025-07-09T19:25:49.407-03:00  INFO 18316 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-07-09T19:25:49.843-03:00  INFO 18316 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 299 ms. Found 8 JPA repository interfaces.
-2025-07-09T19:25:52.063-03:00  INFO 18316 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-07-09T19:25:52.832-03:00  INFO 18316 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2025-07-09T19:25:53.089-03:00  INFO 18316 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-07-09T19:25:54.666-03:00  INFO 18316 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-07-09T19:25:54.975-03:00  INFO 18316 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-07-09T19:25:56.039-03:00  INFO 18316 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2025-07-09T19:25:56.041-03:00  INFO 18316 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-07-09T19:25:56.356-03:00  WARN 18316 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-07-09T19:26:00.069-03:00  INFO 18316 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-Hibernate: drop table if exists administrador cascade 
-Hibernate: drop table if exists auditoria cascade 
-Hibernate: drop table if exists cliente cascade 
-Hibernate: drop table if exists contrato cascade 
-Hibernate: drop table if exists devolucao cascade 
-Hibernate: drop table if exists estoque cascade 
-Hibernate: drop table if exists estoque_veiculos_alocados cascade 
-Hibernate: drop table if exists estoque_veiculos_alugados cascade 
-Hibernate: drop table if exists estoque_veiculos_disponiveis cascade 
-Hibernate: drop table if exists estoque_veiculos_manutencao cascade 
-Hibernate: drop table if exists reserva cascade 
-Hibernate: drop table if exists usuario cascade 
-Hibernate: create table administrador (id bigint not null, primary key (id))
-Hibernate: create table auditoria (data_auditoria date, id integer generated by default as identity, sistema_id integer not null, historico varchar(255), nome_usuario varchar(255), procedimento varchar(255) not null, primary key (id))
-Hibernate: create table cliente (lista_suja boolean, id bigint not null, cpf varchar(14) not null unique, cnh varchar(20) not null unique, documento varchar(50) not null, fidelidade varchar(255), primary key (id))
-Hibernate: create table contrato (data_assinatura date, id integer generated by default as identity, valor float(24), status varchar(50), termos TEXT, primary key (id))
-Hibernate: create table devolucao (avarias boolean, id integer generated by default as identity, reserva_id integer, veiculo_id integer, status varchar(50) not null, anotacoes TEXT, primary key (id))
-Hibernate: create table estoque (filial_id integer not null unique, id integer generated by default as identity, total_veiculos integer not null unique, primary key (id))
-Hibernate: create table estoque_veiculos_alocados (estoque_id integer not null, veiculos_alocados integer not null unique)
-Hibernate: create table estoque_veiculos_alugados (estoque_id integer not null, veiculos_alugados integer not null unique)
-Hibernate: create table estoque_veiculos_disponiveis (estoque_id integer not null, veiculos_disponiveis integer not null unique)
-Hibernate: create table estoque_veiculos_manutencao (estoque_id integer not null, veiculos_manutencao integer not null unique)
-Hibernate: create table reserva (cliente_id integer not null, contrato_id integer not null, data_fim date, data_inicio date, desconto_aplicado float(24) not null, filial_id_devolucao integer not null, filial_id_retirada integer not null, id integer generated by default as identity, tarifas_aplicadas float(24) not null, valor_total float(24) not null, forma_pagamento varchar(255), seguro_contratado varchar(255), status varchar(255), primary key (id))
-Hibernate: create table usuario (id bigint generated by default as identity, email varchar(255) not null unique, endereco varchar(255) not null unique, nome varchar(255) not null, senha varchar(255) not null, primary key (id))
-Hibernate: alter table if exists administrador add constraint FK2pojw9weqmkc0476cs86vyyrb foreign key (id) references usuario
-Hibernate: alter table if exists cliente add constraint FKsitxst8o302fspskxfjatuyrl foreign key (id) references usuario
-Hibernate: alter table if exists estoque_veiculos_alocados add constraint FKnei49pbd9x2t6y03mn29ehf4r foreign key (estoque_id) references estoque
-Hibernate: alter table if exists estoque_veiculos_alugados add constraint FKnark40vt35ea3x6pv774cpn6k foreign key (estoque_id) references estoque
-Hibernate: alter table if exists estoque_veiculos_disponiveis add constraint FK150yp57d9kqhou0p3y7gauste foreign key (estoque_id) references estoque
-Hibernate: alter table if exists estoque_veiculos_manutencao add constraint FK266a7uotxjmidsxvtv5k3piqx foreign key (estoque_id) references estoque
-2025-07-09T19:26:00.278-03:00  INFO 18316 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-07-09T19:26:02.191-03:00  WARN 18316 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-07-09T19:26:03.158-03:00  INFO 18316 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2025-07-09T19:26:03.342-03:00  INFO 18316 --- [           main] voce.aluga.testes.ClienteTests           : Started ClienteTests in 24.437 seconds (process running for 32.572)
-Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
-Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
-Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
-]]></system-out>
-    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\Maria\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
-  </testcase>
-  <testcase name="testeAtualizacaoDadosCliente" classname="voce.aluga.testes.ClienteTests" time="0.103">
-    <system-out><![CDATA[Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
-Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
-Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
-Hibernate: update usuario set email=?,endereco=?,nome=?,senha=? where id=?
-Hibernate: update cliente set cnh=?,cpf=?,documento=?,fidelidade=?,lista_suja=? where id=?
-Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
+2025-07-09T19:26:07.870-03:00  INFO 18316 --- [           main] voce.aluga.testes.ReservaTests           : Starting ReservaTests using Java 21.0.1 with PID 18316 (started by Maria in C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga)
+2025-07-09T19:26:07.871-03:00  INFO 18316 --- [           main] voce.aluga.testes.ReservaTests           : No active profile set, falling back to 1 default profile: "default"
+2025-07-09T19:26:08.064-03:00  INFO 18316 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-09T19:26:08.087-03:00  INFO 18316 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 8 JPA repository interfaces.
+2025-07-09T19:26:08.280-03:00  INFO 18316 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-09T19:26:08.286-03:00  INFO 18316 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-09T19:26:08.294-03:00  INFO 18316 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-09T19:26:08.296-03:00  INFO 18316 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-07-09T19:26:08.298-03:00  INFO 18316 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:vocealuga user=SA
+2025-07-09T19:26:08.298-03:00  INFO 18316 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-07-09T19:26:08.299-03:00  WARN 18316 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-09T19:26:08.470-03:00  INFO 18316 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-09T19:26:08.507-03:00  INFO 18316 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-09T19:26:08.633-03:00  WARN 18316 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-09T19:26:08.745-03:00  INFO 18316 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:vocealuga'
+2025-07-09T19:26:08.790-03:00  INFO 18316 --- [           main] voce.aluga.testes.ReservaTests           : Started ReservaTests in 0.949 seconds (process running for 38.02)
 ]]></system-out>
   </testcase>
-  <testcase name="testeResgateDePontosFidelidadeInvalido" classname="voce.aluga.testes.ClienteTests" time="0.006"/>
-  <testcase name="testeResgateDePontosFidelidadeValido" classname="voce.aluga.testes.ClienteTests" time="0.004"/>
-  <testcase name="testeLoginClienteComSucesso" classname="voce.aluga.testes.ClienteTests" time="0.769">
-    <system-out><![CDATA[Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
-Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
-Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_1.email=? and c1_1.senha=?
-]]></system-out>
-  </testcase>
-  <testcase name="testeDeletarCliente" classname="voce.aluga.testes.ClienteTests" time="0.017">
-    <system-out><![CDATA[Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
-Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
-Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
-Hibernate: delete from cliente where id=?
-Hibernate: delete from usuario where id=?
-Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
-]]></system-out>
-  </testcase>
+  <testcase name="testeConfirmarReserva" classname="voce.aluga.testes.ReservaTests" time="0.024"/>
+  <testcase name="testeCalcularValorTotal" classname="voce.aluga.testes.ReservaTests" time="0.011"/>
+  <testcase name="testeAplicarDescontoFidelidade" classname="voce.aluga.testes.ReservaTests" time="0.003"/>
 </testsuite>

@@ -2,9 +2,11 @@ voce\aluga\model\PagamentoPix.class
 voce\aluga\model\Contrato.class
 voce\aluga\model\Reserva.class
 voce\aluga\controller\UsuarioController.class
+voce\aluga\service\ReservaService.class
 voce\aluga\model\Transferencia.class
 voce\aluga\model\Estoque.class
 voce\aluga\model\Seguro.class
+voce\aluga\controller\ReservaController.class
 voce\aluga\model\Matriz.class
 voce\aluga\service\EstoqueService.class
 voce\aluga\model\Veiculo.class
@@ -13,6 +15,7 @@ voce\aluga\model\GrupoVeiculo.class
 voce\aluga\service\ContratoService.class
 voce\aluga\model\Auditoria.class
 voce\aluga\model\Fidelidade.class
+voce\aluga\repository\ReservaRepository.class
 voce\aluga\model\Operador.class
 voce\aluga\service\AdministradorService.class
 voce\aluga\model\PagamentoCartao.class
