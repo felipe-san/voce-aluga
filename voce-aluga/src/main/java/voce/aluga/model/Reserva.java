@@ -10,23 +10,45 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private int clienteId;
+
+    @Column(nullable = false)
     private int contratoId;
 
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date dataInicio;
 
     @Temporal(TemporalType.DATE)
+    @Column
     private Date dataFim;
 
+    @Column(nullable = false)
     private float valorTotal;
+
+    @Column(nullable = true)
     private float descontoAplicado;
+
+    @Column(nullable = false)
     private int filialIdRetirada;
+
+    @Column(nullable = false)
     private int filialIdDevolucao;
+
+    @Column(nullable = false, length = 50)
     private String formaPagamento;
+
+    @Column(nullable = false, length = 100)
     private String seguroContratado;
+
+    @Column(nullable = true)
     private float tarifasAplicadas;
+
+    @Column(nullable = false, length = 30)
     private String status;
+
+    // Métodos
 
     public void confirmarReserva() {
         this.status = "confirmada";
@@ -45,6 +67,8 @@ public class Reserva {
     public void calcularValorReserva(int dias, float precoDiaria) {
         this.valorTotal = dias * precoDiaria + this.tarifasAplicadas - this.descontoAplicado;
     }
+
+    // Getters e Setters
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

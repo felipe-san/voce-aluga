@@ -38,16 +38,27 @@ public class ReservaTests {
     }
 
     @Test
-    void testeConfirmarReserva() {
-        Reserva reserva = new Reserva();
-        reserva.setStatus("pendente");
-        reserva = reservaRepository.save(reserva);
+void testeConfirmarReserva() {
+    Reserva reserva = new Reserva();
+    reserva.setClienteId(1);
+    reserva.setContratoId(123);
+    reserva.setDataInicio(new Date()); 
+    reserva.setDataFim(new Date());    
+    reserva.setFilialIdRetirada(1);
+    reserva.setFilialIdDevolucao(2);
+    reserva.setFormaPagamento("Cartão de Crédito");
+    reserva.setSeguroContratado("Completo");
+    reserva.setTarifasAplicadas(50.0f);
+    reserva.setDescontoAplicado(10.0f);
+    reserva.setValorTotal(0.0f); 
+    reserva.setStatus("pendente");
 
-        reserva.confirmarReserva();
-        reserva = reservaRepository.save(reserva);
+    reserva.confirmarReserva(); 
 
-        assertThat(reserva.getStatus()).isEqualTo("confirmada");
-    }
+    Reserva salva = reservaRepository.save(reserva);
+
+    assertThat(salva.getStatus()).isEqualTo("confirmada");
+}
 
     @Test
     void testeAplicarDescontoFidelidade() {

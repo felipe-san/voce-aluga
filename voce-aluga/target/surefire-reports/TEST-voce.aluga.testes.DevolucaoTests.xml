@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="voce.aluga.testes.ReservaTests" time="0.06" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="voce.aluga.testes.DevolucaoTests" time="1.351" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -64,12 +64,39 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testeSalvarReserva" classname="voce.aluga.testes.ReservaTests" time="0.016">
-    <system-out><![CDATA[2025-07-09T19:48:06.470-03:00  INFO 21284 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [voce.aluga.testes.ReservaTests]: ReservaTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-07-09T19:48:06.473-03:00  INFO 21284 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration voce.aluga.Main for test class voce.aluga.testes.ReservaTests
+  <testcase name="testeVerificarAvariasComAvarias" classname="voce.aluga.testes.DevolucaoTests" time="0.024">
+    <system-out><![CDATA[2025-07-09T19:48:05.118-03:00  INFO 21284 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [voce.aluga.testes.DevolucaoTests]: DevolucaoTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-07-09T19:48:05.144-03:00  INFO 21284 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration voce.aluga.Main for test class voce.aluga.testes.DevolucaoTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2025-07-09T19:48:05.227-03:00  INFO 21284 --- [           main] voce.aluga.testes.DevolucaoTests         : Starting DevolucaoTests using Java 21.0.1 with PID 21284 (started by Maria in C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga)
+2025-07-09T19:48:05.227-03:00  INFO 21284 --- [           main] voce.aluga.testes.DevolucaoTests         : No active profile set, falling back to 1 default profile: "default"
+2025-07-09T19:48:05.527-03:00  INFO 21284 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-09T19:48:05.558-03:00  INFO 21284 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 8 JPA repository interfaces.
+2025-07-09T19:48:05.685-03:00  INFO 21284 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-09T19:48:05.690-03:00  INFO 21284 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-09T19:48:05.698-03:00  INFO 21284 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-09T19:48:05.700-03:00  INFO 21284 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-07-09T19:48:05.703-03:00  INFO 21284 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:vocealuga user=SA
+2025-07-09T19:48:05.703-03:00  INFO 21284 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-07-09T19:48:05.704-03:00  WARN 21284 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-09T19:48:05.981-03:00  INFO 21284 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-09T19:48:06.032-03:00  INFO 21284 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-09T19:48:06.188-03:00  WARN 21284 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-09T19:48:06.331-03:00  INFO 21284 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:vocealuga'
+2025-07-09T19:48:06.370-03:00  INFO 21284 --- [           main] voce.aluga.testes.DevolucaoTests         : Started DevolucaoTests in 1.216 seconds (process running for 9.781)
 ]]></system-out>
   </testcase>
-  <testcase name="testeConfirmarReserva" classname="voce.aluga.testes.ReservaTests" time="0.008"/>
-  <testcase name="testeCalcularValorTotal" classname="voce.aluga.testes.ReservaTests" time="0.012"/>
-  <testcase name="testeAplicarDescontoFidelidade" classname="voce.aluga.testes.ReservaTests" time="0.006"/>
+  <testcase name="testeSalvarDevolucaoComAvarias" classname="voce.aluga.testes.DevolucaoTests" time="0.009"/>
+  <testcase name="testeVerificarAvariasSemAvarias" classname="voce.aluga.testes.DevolucaoTests" time="0.008"/>
+  <testcase name="testeSalvarDevolucaoSemAvarias" classname="voce.aluga.testes.DevolucaoTests" time="0.013"/>
+  <testcase name="testeBuscarDevolucaoPorId" classname="voce.aluga.testes.DevolucaoTests" time="0.014"/>
+  <testcase name="testeDeletarDevolucao" classname="voce.aluga.testes.DevolucaoTests" time="0.012"/>
 </testsuite>
