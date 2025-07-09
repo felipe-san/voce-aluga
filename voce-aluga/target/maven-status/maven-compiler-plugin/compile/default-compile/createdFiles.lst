@@ -16,11 +16,13 @@ voce\aluga\service\ContratoService.class
 voce\aluga\model\Auditoria.class
 voce\aluga\model\Fidelidade.class
 voce\aluga\repository\ReservaRepository.class
+voce\aluga\service\ManutencaoService.class
 voce\aluga\model\Operador.class
 voce\aluga\service\AdministradorService.class
 voce\aluga\model\PagamentoCartao.class
 voce\aluga\repository\UsuarioRepository.class
 voce\aluga\controller\DevolucaoController.class
+voce\aluga\controller\ManutencaoController.class
 voce\aluga\model\Usuario.class
 voce\aluga\config\UserSession.class
 voce\aluga\view\View.class
@@ -39,6 +41,7 @@ voce\aluga\controller\AdministradorController.class
 voce\aluga\Main.class
 voce\aluga\repository\AuditoriaRepository.class
 voce\aluga\controller\ClienteController.class
+voce\aluga\repository\ManutencaoRepository.class
 voce\aluga\model\Pagamento.class
 voce\aluga\model\PagamentoDinheiro.class
 voce\aluga\model\Manutencao.class
