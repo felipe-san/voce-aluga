@@ -37,17 +37,48 @@ public class Manutencao {
         return this.dataInicio;
     }
 
-    public int getId() { return id; }
-    public int getVeiculoId() { return veiculoId; }
-    public void setVeiculoId(int veiculoId) { this.veiculoId = veiculoId; }
-    public String getTipoManutencao() { return tipoManutencao; }
-    public void setTipoManutencao(String tipoManutencao) { this.tipoManutencao = tipoManutencao; }
-    public Date getDataInicio() { return dataInicio; }
-    public void setDataInicio(Date dataInicio) { this.dataInicio = dataInicio; }
-    public Date getDataFim() { return dataFim; }
-    public void setDataFim(Date dataFim) { this.dataFim = dataFim; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-    public String getAnotacoes() { return anotacoes; }
-    public void setAnotacoes(String anotacoes) { this.anotacoes = anotacoes; }
+    public int getId() { 
+        return id; 
+    }
+
+    public int getVeiculoId() { 
+        return veiculoId; 
+    }
+
+    public void setVeiculoId(int veiculoId) { 
+        this.veiculoId = veiculoId; 
+    }
+
+    public String getTipoManutencao() { 
+        return tipoManutencao; 
+    }
+    public void setTipoManutencao(String tipoManutencao) { 
+        this.tipoManutencao = tipoManutencao; 
+    }
+
+    public Date getDataInicio() { 
+        return dataInicio; 
+    }
+    public void setDataInicio(Date dataInicio) { 
+        this.dataInicio = dataInicio; 
+    }
+    public Date getDataFim() { 
+        return dataFim; 
+    }
+
+    public void setDataFim(Date dataFim) { 
+        this.dataFim = dataFim; 
+    }
+    public String getStatus() { 
+        return status; 
+    }
+    public void setStatus(String status) { 
+        this.status = status; 
+    }
+    public String getAnotacoes() { 
+        return anotacoes; 
+    }
+    public void setAnotacoes(String anotacoes) { 
+        this.anotacoes = anotacoes; 
+    }
 }

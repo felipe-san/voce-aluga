@@ -20,14 +20,28 @@ public class Cliente extends Usuario {
     @Column(nullable = false, unique = true, length = 20)
     private String cnh;
 
-    public String getDocumento() { return documento; }
-    public void setDocumento(String documento) { this.documento = documento; }
+    public String getDocumento() { 
+        return documento; 
+    }
 
-    public String getFidelidade() { return fidelidade; }
-    public void setFidelidade(String fidelidade) { this.fidelidade = fidelidade; }
+    public void setDocumento(String documento) {
+         this.documento = documento; 
+        }
 
-    public boolean isListaSuja() { return listaSuja; }
-    public void setListaSuja(boolean listaSuja) { this.listaSuja = listaSuja; }
+    public String getFidelidade() { 
+        return fidelidade; 
+    }
+
+    public void setFidelidade(String fidelidade) { 
+        this.fidelidade = fidelidade; 
+    }
+
+    public boolean isListaSuja() { 
+        return listaSuja; 
+    }
+    public void setListaSuja(boolean listaSuja) { 
+        this.listaSuja = listaSuja; 
+    }
 
     public int resgatarPontosFidelidades() {
         try {
@@ -37,11 +51,20 @@ public class Cliente extends Usuario {
         }
     }
 
-    public String getCpf() { return cpf; }
-    public void setCpf(String cpf) { this.cpf = cpf; }
+    public String getCpf() { 
+        return cpf; 
+    }
+    public void setCpf(String cpf) { 
+        this.cpf = cpf; 
+    }
 
-    public String getCnh() { return cnh; }
-    public void setCnh(String cnh) { this.cnh = cnh; }
+    public String getCnh() { 
+        return cnh; 
+    }
+    public void setCnh(String cnh) { 
+        this.cnh = cnh; 
+    }
+    
     public Cliente orElse(Object object) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'orElse'");

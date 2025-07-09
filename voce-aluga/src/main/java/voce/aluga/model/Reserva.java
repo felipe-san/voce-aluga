@@ -48,8 +48,6 @@ public class Reserva {
     @Column(nullable = false, length = 30)
     private String status;
 
-    // Métodos
-
     public void confirmarReserva() {
         this.status = "confirmada";
     }
@@ -68,44 +66,104 @@ public class Reserva {
         this.valorTotal = dias * precoDiaria + this.tarifasAplicadas - this.descontoAplicado;
     }
 
-    // Getters e Setters
+    public int getId() { 
+        return id; 
+    }
+    public void setId(int id) { 
+        this.id = id; 
+    }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getClienteId() { 
+        return clienteId; 
+    }
+    public void setClienteId(int clienteId) { 
+        this.clienteId = clienteId; 
+    }
 
-    public int getClienteId() { return clienteId; }
-    public void setClienteId(int clienteId) { this.clienteId = clienteId; }
+    public int getContratoId() { 
+        return contratoId; 
+    }
 
-    public int getContratoId() { return contratoId; }
-    public void setContratoId(int contratoId) { this.contratoId = contratoId; }
+    public void setContratoId(int contratoId) { 
+        this.contratoId = contratoId; 
+    }
 
-    public Date getDataInicio() { return dataInicio; }
-    public void setDataInicio(Date dataInicio) { this.dataInicio = dataInicio; }
+    public Date getDataInicio() { 
+        return dataInicio; 
+    }
 
-    public Date getDataFim() { return dataFim; }
-    public void setDataFim(Date dataFim) { this.dataFim = dataFim; }
+    public void setDataInicio(Date dataInicio) { 
+        this.dataInicio = dataInicio; 
+    }
 
-    public float getValorTotal() { return valorTotal; }
-    public void setValorTotal(float valorTotal) { this.valorTotal = valorTotal; }
+    public Date getDataFim() { 
+        return dataFim; 
+    }
 
-    public float getDescontoAplicado() { return descontoAplicado; }
-    public void setDescontoAplicado(float descontoAplicado) { this.descontoAplicado = descontoAplicado; }
+    public void setDataFim(Date dataFim) { 
+        this.dataFim = dataFim; 
+    }
 
-    public int getFilialIdRetirada() { return filialIdRetirada; }
-    public void setFilialIdRetirada(int filialIdRetirada) { this.filialIdRetirada = filialIdRetirada; }
+    public float getValorTotal() { 
+        return valorTotal; 
+    }
 
-    public int getFilialIdDevolucao() { return filialIdDevolucao; }
-    public void setFilialIdDevolucao(int filialIdDevolucao) { this.filialIdDevolucao = filialIdDevolucao; }
+    public void setValorTotal(float valorTotal) { 
+        this.valorTotal = valorTotal; 
+    }
 
-    public String getFormaPagamento() { return formaPagamento; }
-    public void setFormaPagamento(String formaPagamento) { this.formaPagamento = formaPagamento; }
+    public float getDescontoAplicado() { 
+        return descontoAplicado; 
+    }
 
-    public String getSeguroContratado() { return seguroContratado; }
-    public void setSeguroContratado(String seguroContratado) { this.seguroContratado = seguroContratado; }
+    public void setDescontoAplicado(float descontoAplicado) { 
+        this.descontoAplicado = descontoAplicado; 
+    }
 
-    public float getTarifasAplicadas() { return tarifasAplicadas; }
-    public void setTarifasAplicadas(float tarifasAplicadas) { this.tarifasAplicadas = tarifasAplicadas; }
+    public int getFilialIdRetirada() { 
+        return filialIdRetirada; 
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public void setFilialIdRetirada(int filialIdRetirada) { 
+        this.filialIdRetirada = filialIdRetirada; 
+    }
+
+    public int getFilialIdDevolucao() { 
+        return filialIdDevolucao; 
+    }
+
+    public void setFilialIdDevolucao(int filialIdDevolucao) { 
+        this.filialIdDevolucao = filialIdDevolucao; 
+    }
+
+    public String getFormaPagamento() { 
+        return formaPagamento; 
+    }
+    public void setFormaPagamento(String formaPagamento) { 
+        this.formaPagamento = formaPagamento; 
+    }
+
+    public String getSeguroContratado() { 
+        return seguroContratado; 
+    }
+
+    public void setSeguroContratado(String seguroContratado) { 
+        this.seguroContratado = seguroContratado; 
+    }
+
+    public float getTarifasAplicadas() { 
+        return tarifasAplicadas; 
+    }
+
+    public void setTarifasAplicadas(float tarifasAplicadas) { 
+        this.tarifasAplicadas = tarifasAplicadas; 
+    }
+
+    public String getStatus() { 
+        return status; 
+    }
+    
+    public void setStatus(String status) { 
+        this.status = status; 
+    }
 }
