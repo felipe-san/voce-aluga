@@ -3,7 +3,7 @@ package voce.aluga.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Filial {
+public class Filial{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

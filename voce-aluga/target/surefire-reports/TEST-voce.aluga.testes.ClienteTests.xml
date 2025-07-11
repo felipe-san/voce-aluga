@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="voce.aluga.testes.ClienteTests" time="12.257" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="voce.aluga.testes.ClienteTests" time="8.385" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="BR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Maria\AppData\Local\Temp\surefire15200542711928831938\surefirebooter-20250709205150884_3.jar C:\Users\Maria\AppData\Local\Temp\surefire15200542711928831938 2025-07-09T20-51-50_603-jvmRun1 surefire-20250709205150884_1tmp surefire_0-20250709205150884_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Maria\AppData\Local\Temp\surefire2727880555109937766\surefirebooter-20250711185946170_3.jar C:\Users\Maria\AppData\Local\Temp\surefire2727880555109937766 2025-07-11T18-59-45_912-jvmRun1 surefire-20250711185946170_1tmp surefire_0-20250711185946170_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\target\test-classes;C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga\target\classes;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.2.5\spring-boot-starter-web-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.2.5\spring-boot-starter-json-3.2.5.jar;C:\Users\Maria\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\Maria\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\Maria\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.2.5\spring-boot-starter-tomcat-3.2.5.jar;C:\Users\Maria\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.20\tomcat-embed-core-10.1.20.jar;C:\Users\Maria\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.20\tomcat-embed-el-10.1.20.jar;C:\Users\Maria\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.20\tomcat-embed-websocket-10.1.20.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-web\6.1.6\spring-web-6.1.6.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-beans\6.1.6\spring-beans-6.1.6.jar;C:\Users\Maria\.m2\repository\io\micrometer\micrometer-observation\1.12.5\micrometer-observation-1.12.5.jar;C:\Users\Maria\.m2\repository\io\micrometer\micrometer-commons\1.12.5\micrometer-commons-1.12.5.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-webmvc\6.1.6\spring-webmvc-6.1.6.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-aop\6.1.6\spring-aop-6.1.6.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-context\6.1.6\spring-context-6.1.6.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-expression\6.1.6\spring-expression-6.1.6.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.2.5\spring-boot-starter-data-jpa-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.2.5\spring-boot-starter-aop-3.2.5.jar;C:\Users\Maria\.m2\repository\org\aspectj\aspectjweaver\1.9.22\aspectjweaver-1.9.22.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.2.5\spring-boot-starter-jdbc-3.2.5.jar;C:\Users\Maria\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-jdbc\6.1.6\spring-jdbc-6.1.6.jar;C:\Users\Maria\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\Maria\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\Maria\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\Maria\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\Maria\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\Maria\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\Maria\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\Maria\.m2\repository\net\bytebuddy\byte-buddy\1.14.13\byte-buddy-1.14.13.jar;C:\Users\Maria\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\Maria\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\Maria\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\Maria\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\Maria\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\Maria\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\Maria\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\Maria\.m2\repository\org\springframework\data\spring-data-jpa\3.2.5\spring-data-jpa-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\data\spring-data-commons\3.2.5\spring-data-commons-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-orm\6.1.6\spring-orm-6.1.6.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-tx\6.1.6\spring-tx-6.1.6.jar;C:\Users\Maria\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-aspects\6.1.6\spring-aspects-6.1.6.jar;C:\Users\Maria\.m2\repository\com\h2database\h2\2.2.224\h2-2.2.224.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter\3.2.5\spring-boot-starter-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot\3.2.5\spring-boot-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.5\spring-boot-autoconfigure-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.2.5\spring-boot-starter-logging-3.2.5.jar;C:\Users\Maria\.m2\repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\Maria\.m2\repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\Maria\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.21.1\log4j-to-slf4j-2.21.1.jar;C:\Users\Maria\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\Maria\.m2\repository\org\slf4j\jul-to-slf4j\2.0.13\jul-to-slf4j-2.0.13.jar;C:\Users\Maria\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-core\6.1.6\spring-core-6.1.6.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-jcl\6.1.6\spring-jcl-6.1.6.jar;C:\Users\Maria\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.2.5\spring-boot-starter-test-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-test\3.2.5\spring-boot-test-3.2.5.jar;C:\Users\Maria\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.2.5\spring-boot-test-autoconfigure-3.2.5.jar;C:\Users\Maria\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\Maria\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\Maria\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\Maria\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\Maria\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\Maria\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\Maria\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\Maria\.m2\repository\org\awaitility\awaitility\4.2.1\awaitility-4.2.1.jar;C:\Users\Maria\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\Maria\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\Maria\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\Maria\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Maria\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\Maria\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Maria\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\Maria\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\Maria\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\Maria\.m2\repository\org\mockito\mockito-core\5.7.0\mockito-core-5.7.0.jar;C:\Users\Maria\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar;C:\Users\Maria\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Maria\.m2\repository\org\mockito\mockito-junit-jupiter\5.7.0\mockito-junit-jupiter-5.7.0.jar;C:\Users\Maria\.m2\repository\org\skyscreamer\jsonassert\1.5.1\jsonassert-1.5.1.jar;C:\Users\Maria\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\Maria\.m2\repository\org\springframework\spring-test\6.1.6\spring-test-6.1.6.jar;C:\Users\Maria\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;C:\Users\Maria\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\Maria\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\Maria\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\Maria\AppData\Local\Temp\surefire15200542711928831938\surefirebooter-20250709205150884_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Maria\AppData\Local\Temp\surefire2727880555109937766\surefirebooter-20250711185946170_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS-29"/>
@@ -52,7 +52,7 @@
     <property name="user.dir" value="C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="22420"/>
+    <property name="PID" value="2864"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="Cp1252"/>
@@ -64,7 +64,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testeClienteComListaSuja" classname="voce.aluga.testes.ClienteTests" time="1.252">
+  <testcase name="testeClienteComListaSuja" classname="voce.aluga.testes.ClienteTests" time="0.833">
     <system-out><![CDATA[
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -74,19 +74,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2025-07-09T20:51:54.367-03:00  INFO 22420 --- [           main] voce.aluga.testes.ClienteTests           : Starting ClienteTests using Java 21.0.1 with PID 22420 (started by Maria in C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga)
-2025-07-09T20:51:54.369-03:00  INFO 22420 --- [           main] voce.aluga.testes.ClienteTests           : The following 1 profile is active: "test"
-2025-07-09T20:51:56.375-03:00  INFO 22420 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-07-09T20:51:56.555-03:00  INFO 22420 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 159 ms. Found 13 JPA repository interfaces.
-2025-07-09T20:51:57.762-03:00  INFO 22420 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-07-09T20:51:57.994-03:00  INFO 22420 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2025-07-09T20:51:58.070-03:00  INFO 22420 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-07-09T20:51:58.605-03:00  INFO 22420 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-07-09T20:51:58.673-03:00  INFO 22420 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-07-09T20:51:59.044-03:00  INFO 22420 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2025-07-09T20:51:59.046-03:00  INFO 22420 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-07-09T20:51:59.123-03:00  WARN 22420 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-07-09T20:52:00.741-03:00  INFO 22420 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-11T18:59:47.880-03:00  INFO 2864 --- [           main] voce.aluga.testes.ClienteTests           : Starting ClienteTests using Java 21.0.1 with PID 2864 (started by Maria in C:\todosmeusarquivos\Engenharia\branchmaria\voce-aluga\voce-aluga)
+2025-07-11T18:59:47.883-03:00  INFO 2864 --- [           main] voce.aluga.testes.ClienteTests           : The following 1 profile is active: "test"
+2025-07-11T18:59:49.006-03:00  INFO 2864 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-11T18:59:49.169-03:00  INFO 2864 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 154 ms. Found 25 JPA repository interfaces.
+2025-07-11T18:59:49.905-03:00  INFO 2864 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-11T18:59:50.007-03:00  INFO 2864 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-11T18:59:50.072-03:00  INFO 2864 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-11T18:59:50.434-03:00  INFO 2864 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-11T18:59:50.490-03:00  INFO 2864 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-11T18:59:50.768-03:00  INFO 2864 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-07-11T18:59:50.770-03:00  INFO 2864 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-11T18:59:50.806-03:00  WARN 2864 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-11T18:59:52.492-03:00  INFO 2864 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: drop table if exists administrador cascade 
 Hibernate: drop table if exists auditoria cascade 
 Hibernate: drop table if exists cliente cascade 
@@ -102,8 +102,19 @@ Hibernate: drop table if exists filial cascade
 Hibernate: drop table if exists grupo_veiculo cascade 
 Hibernate: drop table if exists lista_suja cascade 
 Hibernate: drop table if exists manutencao cascade 
+Hibernate: drop table if exists matriz cascade 
+Hibernate: drop table if exists matriz_funcionarios cascade 
+Hibernate: drop table if exists matriz_veiculos cascade 
+Hibernate: drop table if exists notificacao cascade 
+Hibernate: drop table if exists operador cascade 
+Hibernate: drop table if exists pagamento cascade 
 Hibernate: drop table if exists reserva cascade 
+Hibernate: drop table if exists seguro cascade 
+Hibernate: drop table if exists sistema cascade 
+Hibernate: drop table if exists tarifa cascade 
+Hibernate: drop table if exists transferencia cascade 
 Hibernate: drop table if exists usuario cascade 
+Hibernate: drop table if exists veiculo cascade 
 Hibernate: create table administrador (id bigint not null, primary key (id))
 Hibernate: create table auditoria (data_auditoria date, id integer generated by default as identity, sistema_id integer not null, historico varchar(255), nome_usuario varchar(255), procedimento varchar(255) not null, primary key (id))
 Hibernate: create table cliente (lista_suja boolean, id bigint not null, cpf varchar(14) not null unique, cnh varchar(20) not null unique, documento varchar(50) not null, fidelidade varchar(255), primary key (id))
@@ -119,18 +130,31 @@ Hibernate: create table filial (id integer generated by default as identity, nom
 Hibernate: create table grupo_veiculo (id integer generated by default as identity, tarifa_base float(24) not null, nome_grupo varchar(50) not null, primary key (id))
 Hibernate: create table lista_suja (data_exclusao date, data_inclusao date not null, id integer generated by default as identity, id_cliente integer not null, motivo varchar(255) not null, primary key (id))
 Hibernate: create table manutencao (data_fim date, data_inicio date not null, id integer generated by default as identity, veiculo_id integer not null, status varchar(30) not null, tipo_manutencao varchar(50) not null, anotacoes TEXT, primary key (id))
+Hibernate: create table matriz (capacidade_estoque integer not null, id integer generated by default as identity, cnpj varchar(255) not null unique, email varchar(255) not null, endereco varchar(255) not null, nome varchar(255) not null, telefone varchar(255) not null, primary key (id))
+Hibernate: create table matriz_funcionarios (matriz_id integer not null, funcionario varchar(255))
+Hibernate: create table matriz_veiculos (matriz_id integer not null, veiculo varchar(255))
+Hibernate: create table notificacao (cliente_id integer not null, id integer generated by default as identity, data_envio timestamp(6) not null, mensagem TEXT not null, status varchar(255) not null, tipo_notificacao varchar(255) not null, primary key (id))
+Hibernate: create table operador (filial_id integer not null, id integer generated by default as identity, email varchar(255) not null unique, endereco varchar(255) not null, funcao varchar(255) not null, nome varchar(255) not null, telefone varchar(255) not null, primary key (id))
+Hibernate: create table pagamento (data_pagamento date not null, id integer generated by default as identity, parcelas integer, reserva_id integer not null, troco float(24), validade date not null, valor float(24) not null, valor_recebido float(24) not null, dtype varchar(31) not null, bandeira varchar(255) not null, chave_pix varchar(255) not null, codigo_seguranca varchar(255) not null, comprovante varchar(255), forma_pagamento varchar(255) not null, numero_cartao varchar(255) not null, status varchar(255) not null, tipo_cartao varchar(255) not null, titular varchar(255) not null, primary key (id))
 Hibernate: create table reserva (cliente_id integer not null, contrato_id integer not null, data_fim date, data_inicio date not null, desconto_aplicado float(24), filial_id_devolucao integer not null, filial_id_retirada integer not null, id integer generated by default as identity, tarifas_aplicadas float(24), valor_total float(24) not null, status varchar(30) not null, forma_pagamento varchar(50) not null, seguro_contratado varchar(100) not null, primary key (id))
+Hibernate: create table seguro (id integer generated by default as identity, valor float(24) not null, cobertura varchar(255) not null, descricao TEXT, tipo_seguro varchar(255) not null, primary key (id))
+Hibernate: create table sistema (data_operacao date not null, id integer generated by default as identity, versao varchar(255) not null, primary key (id))
+Hibernate: create table tarifa (id integer generated by default as identity, valor float(24) not null, descricao TEXT, tipo_tarifa varchar(255) not null, primary key (id))
+Hibernate: create table transferencia (filial_destino_id integer not null, filial_origem_id integer not null, final_transferencia date, id integer generated by default as identity, inicio_transferencia date not null, veiculo_id integer not null, anotacoes TEXT, status varchar(255) not null, primary key (id))
 Hibernate: create table usuario (id bigint generated by default as identity, email varchar(255) not null unique, endereco varchar(255) not null unique, nome varchar(255) not null, senha varchar(255) not null, primary key (id))
+Hibernate: create table veiculo (ano date not null, capacidade_tanque integer not null, consumo_medio float(24) not null, data_proxima_manutencao date not null, filial_id integer not null, id integer generated by default as identity, quilometragem integer not null, grupo varchar(255) not null, historico_manutencao TEXT, modelo varchar(255) not null, placa varchar(255) not null unique, status varchar(255) not null, primary key (id))
 Hibernate: alter table if exists administrador add constraint FK2pojw9weqmkc0476cs86vyyrb foreign key (id) references usuario
 Hibernate: alter table if exists cliente add constraint FKsitxst8o302fspskxfjatuyrl foreign key (id) references usuario
 Hibernate: alter table if exists estoque_veiculos_alocados add constraint FKnei49pbd9x2t6y03mn29ehf4r foreign key (estoque_id) references estoque
 Hibernate: alter table if exists estoque_veiculos_alugados add constraint FKnark40vt35ea3x6pv774cpn6k foreign key (estoque_id) references estoque
 Hibernate: alter table if exists estoque_veiculos_disponiveis add constraint FK150yp57d9kqhou0p3y7gauste foreign key (estoque_id) references estoque
 Hibernate: alter table if exists estoque_veiculos_manutencao add constraint FK266a7uotxjmidsxvtv5k3piqx foreign key (estoque_id) references estoque
-2025-07-09T20:52:00.849-03:00  INFO 22420 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-07-09T20:52:01.987-03:00  WARN 22420 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-07-09T20:52:02.683-03:00  INFO 22420 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2025-07-09T20:52:02.801-03:00  INFO 22420 --- [           main] voce.aluga.testes.ClienteTests           : Started ClienteTests in 9.343 seconds (process running for 11.644)
+Hibernate: alter table if exists matriz_funcionarios add constraint FKnndmecphrrwbv7hfuuype4x2 foreign key (matriz_id) references matriz
+Hibernate: alter table if exists matriz_veiculos add constraint FKq7tnaa2kcxouwe01rj0vo7us4 foreign key (matriz_id) references matriz
+2025-07-11T18:59:52.598-03:00  INFO 2864 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-11T18:59:53.721-03:00  WARN 2864 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-11T18:59:54.224-03:00  INFO 2864 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-11T18:59:54.307-03:00  INFO 2864 --- [           main] voce.aluga.testes.ClienteTests           : Started ClienteTests in 6.817 seconds (process running for 7.99)
 Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
 Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
 Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
@@ -141,7 +165,7 @@ WARNING: If a serviceability tool is not in use, please run with -Djdk.instrumen
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
 ]]></system-err>
   </testcase>
-  <testcase name="testeAtualizacaoDadosCliente" classname="voce.aluga.testes.ClienteTests" time="0.062">
+  <testcase name="testeAtualizacaoDadosCliente" classname="voce.aluga.testes.ClienteTests" time="0.033">
     <system-out><![CDATA[Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
 Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
 Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
@@ -150,15 +174,15 @@ Hibernate: update cliente set cnh=?,cpf=?,documento=?,fidelidade=?,lista_suja=? 
 Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testeResgateDePontosFidelidadeInvalido" classname="voce.aluga.testes.ClienteTests" time="0.005"/>
-  <testcase name="testeResgateDePontosFidelidadeValido" classname="voce.aluga.testes.ClienteTests" time="0.003"/>
-  <testcase name="testeLoginClienteComSucesso" classname="voce.aluga.testes.ClienteTests" time="0.242">
+  <testcase name="testeResgateDePontosFidelidadeInvalido" classname="voce.aluga.testes.ClienteTests" time="0.006"/>
+  <testcase name="testeResgateDePontosFidelidadeValido" classname="voce.aluga.testes.ClienteTests" time="0.004"/>
+  <testcase name="testeLoginClienteComSucesso" classname="voce.aluga.testes.ClienteTests" time="0.172">
     <system-out><![CDATA[Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
 Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
 Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_1.email=? and c1_1.senha=?
 ]]></system-out>
   </testcase>
-  <testcase name="testeDeletarCliente" classname="voce.aluga.testes.ClienteTests" time="0.023">
+  <testcase name="testeDeletarCliente" classname="voce.aluga.testes.ClienteTests" time="0.024">
     <system-out><![CDATA[Hibernate: insert into usuario (email,endereco,nome,senha,id) values (?,?,?,?,default)
 Hibernate: insert into cliente (cnh,cpf,documento,fidelidade,lista_suja,id) values (?,?,?,?,?,?)
 Hibernate: select c1_0.id,c1_1.email,c1_1.endereco,c1_1.nome,c1_1.senha,c1_0.cnh,c1_0.cpf,c1_0.documento,c1_0.fidelidade,c1_0.lista_suja from cliente c1_0 join usuario c1_1 on c1_0.id=c1_1.id where c1_0.id=?
