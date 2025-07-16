@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios, { InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'http://localhost:8081/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -9,11 +9,11 @@ const api = axios.create({
 
 // Interceptador para logs de requisições
 api.interceptors.request.use(
-  (config) => {
+  (config: InternalAxiosRequestConfig) => {
     console.log(`🚀 Requisição: ${config.method?.toUpperCase()} ${config.url}`);
     return config;
   },
-  (error) => {
+  (error: AxiosError) => {
     console.error('❌ Erro na requisição:', error);
     return Promise.reject(error);
   }
@@ -21,11 +21,11 @@ api.interceptors.request.use(
 
 // Interceptador para tratamento de respostas
 api.interceptors.response.use(
-  (response) => {
+  (response: AxiosResponse) => {
     console.log(`✅ Resposta: ${response.status} ${response.config.url}`);
     return response;
   },
-  (error) => {
+  (error: AxiosError) => {
     console.error('❌ Erro na resposta:', error.response?.data || error.message);
     return Promise.reject(error);
   }

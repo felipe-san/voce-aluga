@@ -11,6 +11,11 @@ public class Estoque {
     private int id;
     private int filialId;
     private int totalVeiculos;
+    
+    // Campos para compatibilidade com frontend
+    private int veiculoId;
+    private int quantidade;
+    private String localizacao;
 
     @ElementCollection
     private List<Integer> veiculosDisponiveis;
@@ -27,6 +32,10 @@ public class Estoque {
 
     public int getId() { 
         return id; 
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getFilialId() { 
@@ -74,6 +83,31 @@ public class Estoque {
     }
     public void setVeiculosAlugados(List<Integer> veiculosAlugados) { 
         this.veiculosAlugados = veiculosAlugados; 
+    }
+
+    // Getters e setters para compatibilidade com frontend
+    public int getVeiculoId() {
+        return veiculoId;
+    }
+
+    public void setVeiculoId(int veiculoId) {
+        this.veiculoId = veiculoId;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
     }
 
 }
