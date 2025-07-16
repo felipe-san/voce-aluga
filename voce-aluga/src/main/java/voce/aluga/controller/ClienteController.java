@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ClienteController {
 
     @Autowired
@@ -26,12 +27,18 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Cliente> buscarPorId(@PathVariable int id) {
+    public Optional<Cliente> buscarPorId(@PathVariable Long id) {
         return clienteService.buscarPorId(id);
     }
 
+    @PutMapping("/{id}")
+    public Cliente atualizarCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
+        cliente.setId(id);
+        return clienteService.salvar(cliente);
+    }
+
     @DeleteMapping("/{id}")
-    public void deletarCliente(@PathVariable int id) {
+    public void deletarCliente(@PathVariable Long id) {
         clienteService.deletar(id);
     }
 }

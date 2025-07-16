@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/estoques")
+@RequestMapping("/estoque")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EstoqueController {
 
     @Autowired
@@ -28,6 +29,12 @@ public class EstoqueController {
     @GetMapping("/{id}")
     public Optional<Estoque> buscarPorId(@PathVariable int id) {
         return estoqueService.buscarPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public Estoque atualizarEstoque(@PathVariable int id, @RequestBody Estoque estoque) {
+        estoque.setId(id);
+        return estoqueService.salvar(estoque);
     }
 
     @DeleteMapping("/{id}")

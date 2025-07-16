@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/contratos")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ContratoController {
 
     @Autowired
@@ -28,6 +29,12 @@ public class ContratoController {
     @GetMapping("/{id}")
     public Optional<Contrato> buscarContrato(@PathVariable int id) {
         return contratoService.buscarPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public Contrato atualizarContrato(@PathVariable int id, @RequestBody Contrato contrato) {
+        contrato.setId(id);
+        return contratoService.salvar(contrato);
     }
 
     @DeleteMapping("/{id}")
