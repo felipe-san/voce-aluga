@@ -1,49 +1,91 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Box, Container } from '@mui/material';
+import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import LoginPage from './pages/LoginPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Dashboard from './pages/Dashboard';
 import Clientes from './pages/Clientes';
 import Contratos from './pages/Contratos';
-import Veiculos from './pages/Veiculos';
 import Estoque from './pages/Estoque';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminVeiculos from './pages/admin/AdminVeiculos';
+import ClientePerfil from './pages/client/ClientePerfil';
+import ClienteReservas from './pages/client/ClienteReservas';
+import ClienteHistorico from './pages/client/ClienteHistorico';
 
-function App() {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+    },
+    secondary: {
+      main: '#dc004e',
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+  },
+});
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+const AppContent: React.FC = () => {
+  const { user, currentPage, setCurrentPage } = useAuth();
+
+  if (!user) {
+    return <LoginPage />;
+  }
+
+  const renderCurrentPage = () => {
+    if (user.role === 'admin') {
+      switch (currentPage) {
+        case 'dashboard':
+          return <AdminDashboard />;
+        case 'veiculos':
+          return <AdminVeiculos />;
+        case 'clientes':
+          return <Clientes />;
+        case 'contratos':
+          return <Contratos />;
+        case 'estoque':
+          return <Estoque />;
+        default:
+          return <AdminDashboard />;
+      }
+    } else {
+      switch (currentPage) {
+        case 'perfil':
+          return <ClientePerfil />;
+        case 'reservas':
+          return <ClienteReservas />;
+        case 'historico':
+          return <ClienteHistorico />;
+        default:
+          return <ClientePerfil />;
+      }
+    }
   };
 
   return (
-    <Router>
-      <Box sx={{ display: 'flex' }}>
-        <Header onMenuClick={toggleSidebar} />
-        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            p: 3,
-            mt: 8, // Espaço para o header fixo
-            minHeight: '100vh',
-            backgroundColor: '#f5f5f5'
-          }}
-        >
-          <Container maxWidth="xl">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/clientes" element={<Clientes />} />
-              <Route path="/contratos" element={<Contratos />} />
-              <Route path="/veiculos" element={<Veiculos />} />
-              <Route path="/estoque" element={<Estoque />} />
-            </Routes>
-          </Container>
+    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      <Sidebar />
+      <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+        <Header />
+        <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 8 }}>
+          {renderCurrentPage()}
         </Box>
       </Box>
-    </Router>
+    </Box>
   );
-}
+};
+
+const App: React.FC = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </ThemeProvider>
+  );
+};
 
 export default App;

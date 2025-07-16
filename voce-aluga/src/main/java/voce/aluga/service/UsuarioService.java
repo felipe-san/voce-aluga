@@ -29,14 +29,24 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
+    public Usuario autenticar(String email, String senha) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmailAndSenha(email, senha);
+        return usuario.orElse(null);
+    }
+
+    public Optional<Usuario> authenticate(String email, String senha) {
+        return usuarioRepository.findByEmailAndSenha(email, senha);
+    }
+
     public Usuario login(String email) {
-        return usuarioRepository.findByEmail(email);
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+        return usuario.orElse(null);
     }
 
     public Usuario autenticar(Usuario usuario) {
-        Usuario existente = usuarioRepository.findByEmail(usuario.getEmail());
-        if (existente != null && existente.getNome().equals(usuario.getNome())) {
-            return existente;
+        Optional<Usuario> existente = usuarioRepository.findByEmail(usuario.getEmail());
+        if (existente.isPresent() && existente.get().getNome().equals(usuario.getNome())) {
+            return existente.get();
         }
         return null;
     }

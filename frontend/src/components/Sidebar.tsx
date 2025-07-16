@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Drawer,
   List,
@@ -9,64 +8,84 @@ import {
   ListItemText,
   Divider,
   Box,
+  Typography
 } from '@mui/material';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
-import DescriptionIcon from '@mui/icons-material/Description';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import InventoryIcon from '@mui/icons-material/Inventory';
+import {
+  Dashboard,
+  DirectionsCar,
+  People,
+  Assignment,
+  Inventory,
+  Person,
+  History
+} from '@mui/icons-material';
+import { useAuth } from '../contexts/AuthContext';
 
-interface SidebarProps {
-  open: boolean;
-  onClose: () => void;
-}
+const Sidebar: React.FC = () => {
+  const { isAdmin, currentPage, setCurrentPage } = useAuth();
 
-const menuItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
-  { text: 'Clientes', icon: <PeopleIcon />, path: '/clientes' },
-  { text: 'Contratos', icon: <DescriptionIcon />, path: '/contratos' },
-  { text: 'Veículos', icon: <DirectionsCarIcon />, path: '/veiculos' },
-  { text: 'Estoque', icon: <InventoryIcon />, path: '/estoque' },
-];
+  const adminMenuItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: <Dashboard /> },
+    { id: 'veiculos', label: 'Veículos', icon: <DirectionsCar /> },
+    { id: 'clientes', label: 'Clientes', icon: <People /> },
+    { id: 'contratos', label: 'Contratos', icon: <Assignment /> },
+    { id: 'estoque', label: 'Estoque', icon: <Inventory /> },
+  ];
 
-const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const clientMenuItems = [
+    { id: 'perfil', label: 'Meu Perfil', icon: <Person /> },
+    { id: 'reservas', label: 'Minhas Reservas', icon: <Assignment /> },
+    { id: 'historico', label: 'Histórico', icon: <History /> },
+  ];
 
-  const handleNavigation = (path: string) => {
-    navigate(path);
-    onClose();
-  };
+  const menuItems = isAdmin ? adminMenuItems : clientMenuItems;
 
   return (
     <Drawer
-      variant="temporary"
-      open={open}
-      onClose={onClose}
+      variant="permanent"
       sx={{
         width: 240,
         flexShrink: 0,
-        '& .MuiDrawer-paper': {
+        [`& .MuiDrawer-paper`]: {
           width: 240,
           boxSizing: 'border-box',
+          top: 64, // Height of AppBar
+          height: 'calc(100% - 64px)',
         },
       }}
     >
-      <Box sx={{ mt: 8 }}> {/* Espaço para o header */}
+      <Box sx={{ overflow: 'auto', mt: 2 }}>
+        <Typography variant="h6" sx={{ px: 2, mb: 2, color: 'text.secondary' }}>
+          {isAdmin ? 'Administração' : 'Área do Cliente'}
+        </Typography>
+        <Divider />
         <List>
           {menuItems.map((item) => (
-            <ListItem key={item.text} disablePadding>
+            <ListItem key={item.id} disablePadding>
               <ListItemButton
-                onClick={() => handleNavigation(item.path)}
-                selected={location.pathname === item.path}
+                selected={currentPage === item.id}
+                onClick={() => setCurrentPage(item.id)}
+                sx={{
+                  mx: 1,
+                  borderRadius: 1,
+                  '&.Mui-selected': {
+                    backgroundColor: 'primary.main',
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: 'primary.dark',
+                    },
+                    '& .MuiListItemIcon-root': {
+                      color: 'white',
+                    },
+                  },
+                }}
               >
                 <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
+                <ListItemText primary={item.label} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
       </Box>
     </Drawer>
   );

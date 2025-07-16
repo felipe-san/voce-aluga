@@ -22,6 +22,7 @@ voce\aluga\controller\DevolucaoController.class
 voce\aluga\model\Usuario.class
 voce\aluga\view\View.class
 voce\aluga\controller\ContratoController.class
+voce\aluga\controller\AuthController.class
 voce\aluga\service\DevolucaoService.class
 voce\aluga\repository\VeiculoRepository.class
 voce\aluga\model\Filial.class
@@ -43,6 +44,7 @@ voce\aluga\model\Pagamento.class
 voce\aluga\model\PagamentoDinheiro.class
 voce\aluga\model\Manutencao.class
 voce\aluga\controller\EstoqueController.class
+voce\aluga\config\CorsConfig.class
 voce\aluga\model\Notificacao.class
 voce\aluga\service\AuditoriaService.class
 voce\aluga\service\ClienteService.class
@@ -50,3 +52,4 @@ voce\aluga\repository\DevolucaoRepository.class
 voce\aluga\model\Tarifa.class
 voce\aluga\service\UsuarioService.class
 voce\aluga\controller\AuditoriaController.class
+voce\aluga\controller\AuthController$LoginRequest.class

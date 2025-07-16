@@ -8,6 +8,7 @@ C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\vo
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\service\AdministradorService.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Estoque.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\controller\VeiculoController.java
+C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\config\CorsConfig.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Operador.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Usuario.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\service\UsuarioService.java
@@ -44,6 +45,7 @@ C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\vo
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Seguro.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\repository\DevolucaoRepository.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\repository\AuditoriaRepository.java
+C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\controller\AuthController.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\model\Tarifa.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\controller\ContratoController.java
 C:\Users\eikev\OneDrive\Documentos\GitHub\voce-aluga\voce-aluga\src\main\java\voce\aluga\service\AuditoriaService.java

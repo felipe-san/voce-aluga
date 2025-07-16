@@ -3,41 +3,91 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  IconButton,
+  Button,
   Box,
+  Avatar,
+  Menu,
+  MenuItem,
+  IconButton,
+  Chip
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import { DirectionsCar, AccountCircle, ExitToApp } from '@mui/icons-material';
+import { useAuth } from '../contexts/AuthContext';
 
-interface HeaderProps {
-  onMenuClick: () => void;
-}
+const Header: React.FC = () => {
+  const { user, logout, isAdmin } = useAuth();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    logout();
+    handleClose();
+  };
+
   return (
-    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+    <AppBar position="sticky" elevation={2}>
       <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={onMenuClick}
-          edge="start"
-          sx={{ mr: 2 }}
-        >
-          <MenuIcon />
-        </IconButton>
-        
-        <DirectionsCarIcon sx={{ mr: 2 }} />
-        
-        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-          Você Aluga - Sistema de Gerenciamento
+        <DirectionsCar sx={{ mr: 2 }} />
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
+          VOCÊ ALUGA
         </Typography>
-        
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography variant="body2">
-            Sistema de Aluguel de Carros
-          </Typography>
-        </Box>
+
+        {user && (
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Chip
+              label={isAdmin ? 'Administrador' : 'Cliente'}
+              color={isAdmin ? 'secondary' : 'default'}
+              size="small"
+              variant="outlined"
+              sx={{ color: 'white', borderColor: 'rgba(255,255,255,0.5)' }}
+            />
+            
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Typography variant="body2">
+                Olá, {user.name}
+              </Typography>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <Avatar sx={{ width: 32, height: 32 }}>
+                  <AccountCircle />
+                </Avatar>
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleLogout}>
+                  <ExitToApp sx={{ mr: 1 }} />
+                  Sair
+                </MenuItem>
+              </Menu>
+            </Box>
+          </Box>
+        )}
       </Toolbar>
     </AppBar>
   );

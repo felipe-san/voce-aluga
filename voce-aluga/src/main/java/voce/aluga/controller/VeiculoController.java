@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/veiculos")
+@RequestMapping("/api/veiculos")
 @CrossOrigin(origins = "http://localhost:3000")
 public class VeiculoController {
 
@@ -27,33 +27,33 @@ public class VeiculoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Veiculo> buscarPorId(@PathVariable int id) {
+    public Optional<Veiculo> buscarPorId(@PathVariable Long id) {
         return veiculoService.buscarPorId(id);
     }
 
     @PutMapping("/{id}")
-    public Veiculo atualizarVeiculo(@PathVariable int id, @RequestBody Veiculo veiculo) {
+    public Veiculo atualizarVeiculo(@PathVariable Long id, @RequestBody Veiculo veiculo) {
         veiculo.setId(id);
         return veiculoService.salvar(veiculo);
     }
 
     @DeleteMapping("/{id}")
-    public void deletarVeiculo(@PathVariable int id) {
+    public void deletarVeiculo(@PathVariable Long id) {
         veiculoService.deletar(id);
     }
 
     @GetMapping("/disponiveis")
     public List<Veiculo> listarDisponiveis() {
-        return veiculoService.listarDisponiveis();
+        return veiculoService.listarPorStatus("disponivel");
     }
 
     @PostMapping("/{id}/manutencao")
-    public void enviarParaManutencao(@PathVariable int id) {
-        veiculoService.enviarParaManutencao(id);
+    public void enviarParaManutencao(@PathVariable Long id) {
+        veiculoService.atualizarStatus(id, "manutencao");
     }
 
     @PostMapping("/{id}/disponivel")
-    public void marcarComoDisponivel(@PathVariable int id) {
-        veiculoService.marcarComoDisponivel(id);
+    public void marcarComoDisponivel(@PathVariable Long id) {
+        veiculoService.atualizarStatus(id, "disponivel");
     }
 }

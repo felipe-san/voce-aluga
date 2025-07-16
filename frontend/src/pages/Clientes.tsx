@@ -24,15 +24,18 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Cliente } from '../types';
 import { clienteService } from '../services/clienteService';
+import Loading from '../components/Loading';
+import ErrorDisplay from '../components/ErrorDisplay';
 
 const Clientes: React.FC = () => {
   const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
   const [open, setOpen] = useState(false);
   const [editingCliente, setEditingCliente] = useState<Cliente | null>(null);
   const [formData, setFormData] = useState<Partial<Cliente>>({
     nome: '',
     email: '',
-    telefone: '',
     endereco: '',
     documento: '',
     cpf: '',
@@ -47,10 +50,15 @@ const Clientes: React.FC = () => {
 
   const carregarClientes = async () => {
     try {
+      setLoading(true);
+      setError(null);
       const response = await clienteService.listarTodos();
       setClientes(response.data);
     } catch (error) {
       console.error('Erro ao carregar clientes:', error);
+      setError(error as Error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -91,7 +99,6 @@ const Clientes: React.FC = () => {
     setFormData({
       nome: '',
       email: '',
-      telefone: '',
       endereco: '',
       documento: '',
       cpf: '',
@@ -117,30 +124,42 @@ const Clientes: React.FC = () => {
           variant="contained"
           startIcon={<AddIcon />}
           onClick={() => setOpen(true)}
+          disabled={loading}
         >
           Novo Cliente
         </Button>
       </Box>
 
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Nome</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>CPF</TableCell>
-              <TableCell>CNH</TableCell>
-              <TableCell>Fidelidade</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Ações</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {clientes.map((cliente) => (
-              <TableRow key={cliente.id}>
-                <TableCell>{cliente.nome}</TableCell>
-                <TableCell>{cliente.email}</TableCell>
-                <TableCell>{cliente.cpf}</TableCell>
+      {loading && <Loading message="Carregando clientes..." />}
+      
+      {error && (
+        <ErrorDisplay 
+          error={error} 
+          onRetry={carregarClientes}
+          message="Erro ao carregar lista de clientes"
+        />
+      )}
+
+      {!loading && !error && (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Nome</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>CPF</TableCell>
+                <TableCell>CNH</TableCell>
+                <TableCell>Fidelidade</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell>Ações</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {clientes.map((cliente) => (
+                <TableRow key={cliente.id}>
+                  <TableCell>{cliente.nome}</TableCell>
+                  <TableCell>{cliente.email}</TableCell>
+                  <TableCell>{cliente.cpf}</TableCell>
                 <TableCell>{cliente.cnh}</TableCell>
                 <TableCell>{cliente.fidelidade} pontos</TableCell>
                 <TableCell>
@@ -163,6 +182,7 @@ const Clientes: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      )}
 
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <DialogTitle>
@@ -201,14 +221,6 @@ const Clientes: React.FC = () => {
                 label="CNH"
                 value={formData.cnh}
                 onChange={(e) => setFormData({ ...formData, cnh: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Telefone"
-                value={formData.telefone}
-                onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
               />
             </Grid>
             <Grid item xs={12} sm={6}>

@@ -2,7 +2,6 @@ export interface Usuario {
   id?: number;
   nome: string;
   email: string;
-  telefone: string;
   endereco: string;
 }
 
@@ -29,9 +28,15 @@ export interface Veiculo {
   id?: number;
   modelo: string;
   marca: string;
-  ano: number;
+  ano: string; // Pode ser Date no backend, mas vamos usar string para simplicidade
   placa: string;
   cor: string;
+  quilometragem?: number;
+  capacidadeTanque?: number;
+  consumoMedio?: number;
+  dataProximaManutencao?: string;
+  historicoManutencao?: string;
+  status?: string;
   disponivel: boolean;
   valorDiaria: number;
   categoria: string;

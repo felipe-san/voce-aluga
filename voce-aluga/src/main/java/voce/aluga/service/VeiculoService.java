@@ -7,7 +7,6 @@ import voce.aluga.repository.VeiculoRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class VeiculoService {
@@ -23,43 +22,40 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public Optional<Veiculo> buscarPorId(int id) {
+    public Optional<Veiculo> buscarPorId(Long id) {
         return veiculoRepository.findById(id);
     }
 
-    public void deletar(int id) {
+    public void deletar(Long id) {
         veiculoRepository.deleteById(id);
     }
 
-    public List<Veiculo> listarDisponiveis() {
-        return veiculoRepository.findAll().stream()
-                .filter(Veiculo::isDisponivel)
-                .collect(Collectors.toList());
-    }
-
-    public void enviarParaManutencao(int id) {
-        Optional<Veiculo> veiculoOpt = veiculoRepository.findById(id);
-        if (veiculoOpt.isPresent()) {
-            Veiculo veiculo = veiculoOpt.get();
-            veiculo.setStatus("MANUTENCAO");
-            veiculo.setDisponivel(false);
-            veiculoRepository.save(veiculo);
-        }
-    }
-
-    public void marcarComoDisponivel(int id) {
-        Optional<Veiculo> veiculoOpt = veiculoRepository.findById(id);
-        if (veiculoOpt.isPresent()) {
-            Veiculo veiculo = veiculoOpt.get();
-            veiculo.setStatus("DISPONIVEL");
-            veiculo.setDisponivel(true);
-            veiculoRepository.save(veiculo);
-        }
+    public List<Veiculo> buscarPorStatus(String status) {
+        return veiculoRepository.findByStatus(status);
     }
 
     public List<Veiculo> buscarPorCategoria(String categoria) {
-        return veiculoRepository.findAll().stream()
-                .filter(v -> categoria.equals(v.getCategoria()))
-                .collect(Collectors.toList());
+        return veiculoRepository.findByCategoria(categoria);
+    }
+
+    public List<Veiculo> buscarPorMarca(String marca) {
+        return veiculoRepository.findByMarca(marca);
+    }
+
+    public List<Veiculo> buscarPorFilial(Integer filialId) {
+        return veiculoRepository.findByFilialId(filialId);
+    }
+
+    public List<Veiculo> listarPorStatus(String status) {
+        return veiculoRepository.findByStatus(status);
+    }
+
+    public void atualizarStatus(Long id, String novoStatus) {
+        Optional<Veiculo> veiculo = veiculoRepository.findById(id);
+        if (veiculo.isPresent()) {
+            Veiculo v = veiculo.get();
+            v.setStatus(novoStatus);
+            veiculoRepository.save(v);
+        }
     }
 }
