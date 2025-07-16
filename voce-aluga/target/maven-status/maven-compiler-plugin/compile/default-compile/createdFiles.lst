@@ -10,6 +10,7 @@ voce\aluga\service\EstoqueService.class
 voce\aluga\model\Veiculo.class
 voce\aluga\repository\ContratoRepository.class
 voce\aluga\model\EstoqueSimples.class
+voce\aluga\controller\DashboardController.class
 voce\aluga\model\GrupoVeiculo.class
 voce\aluga\service\ContratoService.class
 voce\aluga\model\Auditoria.class

@@ -20,7 +20,7 @@ export interface Contrato {
   dataInicio: string;
   dataFim: string;
   valorTotal: number;
-  status: string;
+  status?: string | null;
   desconto?: number;
 }
 

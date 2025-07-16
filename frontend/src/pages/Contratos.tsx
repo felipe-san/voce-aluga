@@ -12,15 +12,18 @@ import {
   TableRow,
   IconButton,
   Chip,
+  CircularProgress,
+  Alert,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Contrato } from '../types';
-import { contratoService } from '../services/contratoService';
 
 const Contratos: React.FC = () => {
   const [contratos, setContratos] = useState<Contrato[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     carregarContratos();
@@ -28,25 +31,56 @@ const Contratos: React.FC = () => {
 
   const carregarContratos = async () => {
     try {
-      const response = await contratoService.listarTodos();
-      setContratos(response.data);
-    } catch (error) {
+      setLoading(true);
+      setError(null);
+      
+      // Fazer requisição direta para o backend
+      const response = await fetch('http://localhost:8081/contratos', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      setContratos(data || []);
+    } catch (error: any) {
       console.error('Erro ao carregar contratos:', error);
+      setError(`Erro ao carregar contratos: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDelete = async (id: number) => {
     if (window.confirm('Tem certeza que deseja excluir este contrato?')) {
       try {
-        await contratoService.deletar(id);
-        carregarContratos();
-      } catch (error) {
+        const response = await fetch(`http://localhost:8081/contratos/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        if (response.ok) {
+          carregarContratos();
+        } else {
+          setError('Erro ao deletar contrato');
+        }
+      } catch (error: any) {
         console.error('Erro ao deletar contrato:', error);
+        setError(`Erro ao deletar contrato: ${error.message}`);
       }
     }
   };
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status: string | null | undefined) => {
+    if (!status) return 'default';
+    
     switch (status.toLowerCase()) {
       case 'ativo':
         return 'success';
@@ -70,58 +104,83 @@ const Contratos: React.FC = () => {
         </Button>
       </Box>
 
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Cliente ID</TableCell>
-              <TableCell>Veículo ID</TableCell>
-              <TableCell>Data Início</TableCell>
-              <TableCell>Data Fim</TableCell>
-              <TableCell>Valor Total</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Ações</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {contratos.map((contrato) => (
-              <TableRow key={contrato.id}>
-                <TableCell>{contrato.id}</TableCell>
-                <TableCell>{contrato.clienteId}</TableCell>
-                <TableCell>{contrato.veiculoId}</TableCell>
-                <TableCell>
-                  {new Date(contrato.dataInicio).toLocaleDateString('pt-BR')}
-                </TableCell>
-                <TableCell>
-                  {new Date(contrato.dataFim).toLocaleDateString('pt-BR')}
-                </TableCell>
-                <TableCell>
-                  R$ {contrato.valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                </TableCell>
-                <TableCell>
-                  <Chip
-                    label={contrato.status}
-                    color={getStatusColor(contrato.status)}
-                    size="small"
-                  />
-                </TableCell>
-                <TableCell>
-                  <IconButton color="primary">
-                    <VisibilityIcon />
-                  </IconButton>
-                  <IconButton color="primary">
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton onClick={() => handleDelete(contrato.id!)} color="error">
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
+      {loading && (
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+          <CircularProgress />
+          <Typography sx={{ ml: 2 }}>Carregando contratos...</Typography>
+        </Box>
+      )}
+
+      {error && (
+        <Alert severity="error" sx={{ mb: 3 }}>
+          {error}
+        </Alert>
+      )}
+
+      {!loading && !error && (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Cliente ID</TableCell>
+                <TableCell>Veículo ID</TableCell>
+                <TableCell>Data Início</TableCell>
+                <TableCell>Data Fim</TableCell>
+                <TableCell>Valor Total</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell>Ações</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {contratos.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={8} align="center">
+                    <Typography variant="body1" color="text.secondary">
+                      Nenhum contrato encontrado
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ) : (
+                contratos.map((contrato) => (
+                  <TableRow key={contrato.id}>
+                    <TableCell>{contrato.id}</TableCell>
+                    <TableCell>{contrato.clienteId}</TableCell>
+                    <TableCell>{contrato.veiculoId}</TableCell>
+                    <TableCell>
+                      {contrato.dataInicio ? new Date(contrato.dataInicio).toLocaleDateString('pt-BR') : '-'}
+                    </TableCell>
+                    <TableCell>
+                      {contrato.dataFim ? new Date(contrato.dataFim).toLocaleDateString('pt-BR') : '-'}
+                    </TableCell>
+                    <TableCell>
+                      R$ {contrato.valorTotal ? contrato.valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) : '0,00'}
+                    </TableCell>
+                    <TableCell>
+                      <Chip
+                        label={contrato.status || 'Ativo'}
+                        color={getStatusColor(contrato.status)}
+                        size="small"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <IconButton color="primary">
+                        <VisibilityIcon />
+                      </IconButton>
+                      <IconButton color="primary">
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton onClick={() => handleDelete(contrato.id!)} color="error">
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </Box>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Grid,
@@ -10,7 +10,9 @@ import {
   ListItem,
   ListItemText,
   Chip,
-  Divider
+  Divider,
+  CircularProgress,
+  Alert
 } from '@mui/material';
 import {
   DirectionsCar,
@@ -20,31 +22,66 @@ import {
   AttachMoney,
   Warning
 } from '@mui/icons-material';
+import { dashboardService, DashboardStats, RecentActivity, Alert as DashboardAlert } from '../../services/dashboardService';
 
 const AdminDashboard: React.FC = () => {
-  // Dados simulados - em produção viriam da API
-  const stats = {
-    totalVeiculos: 45,
-    veiculosDisponiveis: 32,
-    veiculosAlugados: 13,
-    totalClientes: 128,
-    contratosAtivos: 13,
-    receitaMensal: 48500,
-    crescimentoMensal: 12.5
-  };
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([]);
+  const [alerts, setAlerts] = useState<DashboardAlert[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const recentActivity = [
-    { id: 1, action: 'Novo contrato', cliente: 'Maria Santos', veiculo: 'Honda Civic', time: '2 horas atrás' },
-    { id: 2, action: 'Devolução', cliente: 'João Silva', veiculo: 'Toyota Corolla', time: '4 horas atrás' },
-    { id: 3, action: 'Manutenção', cliente: 'Sistema', veiculo: 'Ford Ka', time: '1 dia atrás' },
-    { id: 4, action: 'Novo cliente', cliente: 'Ana Costa', veiculo: '-', time: '2 dias atrás' },
-  ];
+  useEffect(() => {
+    const loadDashboardData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // Carregar todos os dados em paralelo
+        const [statsData, activityData, alertsData] = await Promise.all([
+          dashboardService.getStats(),
+          dashboardService.getRecentActivity(),
+          dashboardService.getAlerts()
+        ]);
 
-  const alerts = [
-    { id: 1, type: 'warning', message: 'Ford Ka - Manutenção programada em 3 dias' },
-    { id: 2, type: 'info', message: '5 contratos vencem esta semana' },
-    { id: 3, type: 'success', message: 'Meta mensal de vendas atingida!' }
-  ];
+        setStats(statsData);
+        setRecentActivity(activityData);
+        setAlerts(alertsData);
+      } catch (err) {
+        console.error('Erro ao carregar dados do dashboard:', err);
+        setError('Erro ao carregar dados. Verifique se o backend está funcionando.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadDashboardData();
+  }, []);
+
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
+        <CircularProgress />
+        <Typography sx={{ ml: 2 }}>Carregando dados do dashboard...</Typography>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ p: 3 }}>
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
+  }
+
+  if (!stats) {
+    return (
+      <Box sx={{ p: 3 }}>
+        <Alert severity="warning">Nenhum dado disponível</Alert>
+      </Box>
+    );
+  }
 
   const StatCard = ({ title, value, icon, color = 'primary' }: any) => (
     <Card elevation={2}>
@@ -101,7 +138,7 @@ const AdminDashboard: React.FC = () => {
         <Grid item xs={12} sm={6} md={3}>
           <StatCard
             title="Receita Mensal"
-            value={`R$ ${stats.receitaMensal.toLocaleString()}`}
+            value={`R$ ${stats.receitaMensal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
             icon={<AttachMoney sx={{ fontSize: 40 }} />}
             color="success"
           />
@@ -164,10 +201,9 @@ const AdminDashboard: React.FC = () => {
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <Chip
                               label={activity.action}
-                              size="small"
-                              color={activity.action === 'Novo contrato' ? 'success' : 
-                                     activity.action === 'Devolução' ? 'primary' : 
-                                     activity.action === 'Manutenção' ? 'warning' : 'default'}
+                              size="small"                      color={activity.action === 'Novo contrato' || activity.action === 'Contrato' ? 'success' : 
+                             activity.action === 'Devolução' ? 'primary' : 
+                             activity.action === 'Manutenção' ? 'warning' : 'default'}
                             />
                             <Typography variant="body2">
                               {activity.cliente}
