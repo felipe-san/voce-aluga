@@ -72,16 +72,18 @@ const EstoquePage: React.FC = () => {
   const [novoVeiculo, setNovoVeiculo] = useState({
     modelo: '',
     marca: '',
-    ano: '',
+    ano: new Date().getFullYear(),
     placa: '',
     cor: '',
-    quilometragem: '',
-    capacidadeTanque: '',
-    consumoMedio: '',
-    valorDiaria: '',
+    quilometragem: 0,
+    capacidadeTanque: 0,
+    consumoMedio: 0,
+    preco_diario: 0,
     categoria: '',
-    status: 'DISPONIVEL',
-    localizacao: 'ESTOQUE'
+    status: 'disponivel',
+    filialId: 1,
+    localizacao: 'ESTOQUE',
+    disponivel: false
   });
 
   useEffect(() => {
@@ -130,10 +132,11 @@ const EstoquePage: React.FC = () => {
         ano: novoVeiculo.ano,
         placa: novoVeiculo.placa,
         cor: novoVeiculo.cor,
-        quilometragem: parseInt(novoVeiculo.quilometragem) || 0,
-        capacidadeTanque: parseFloat(novoVeiculo.capacidadeTanque) || 0,
-        consumoMedio: parseFloat(novoVeiculo.consumoMedio) || 0,
-        valorDiaria: parseFloat(novoVeiculo.valorDiaria),
+        quilometragem: novoVeiculo.quilometragem,
+        capacidadeTanque: novoVeiculo.capacidadeTanque,
+        consumoMedio: novoVeiculo.consumoMedio,
+        preco_diario: novoVeiculo.preco_diario,
+        valorDiaria: novoVeiculo.preco_diario, // Para compatibilidade
         categoria: novoVeiculo.categoria,
         status: novoVeiculo.status,
         disponivel: false, // Veículos no estoque não estão disponíveis para locação ainda
@@ -244,16 +247,18 @@ const EstoquePage: React.FC = () => {
     setNovoVeiculo({
       modelo: '',
       marca: '',
-      ano: '',
+      ano: new Date().getFullYear(),
       placa: '',
       cor: '',
-      quilometragem: '',
-      capacidadeTanque: '',
-      consumoMedio: '',
-      valorDiaria: '',
+      quilometragem: 0,
+      capacidadeTanque: 0,
+      consumoMedio: 0,
+      preco_diario: 0,
       categoria: '',
-      status: 'DISPONIVEL',
-      localizacao: 'ESTOQUE'
+      status: 'disponivel',
+      filialId: 1,
+      localizacao: 'ESTOQUE',
+      disponivel: false
     });
   };
 
@@ -467,9 +472,10 @@ const EstoquePage: React.FC = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
+                type="number"
                 label="Ano"
                 value={novoVeiculo.ano}
-                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, ano: e.target.value })}
+                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, ano: parseInt(e.target.value) || new Date().getFullYear() })}
                 required
               />
             </Grid>
@@ -514,7 +520,7 @@ const EstoquePage: React.FC = () => {
                 type="number"
                 label="Quilometragem"
                 value={novoVeiculo.quilometragem}
-                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, quilometragem: e.target.value })}
+                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, quilometragem: parseInt(e.target.value) || 0 })}
                 inputProps={{ min: 0 }}
               />
             </Grid>
@@ -524,7 +530,7 @@ const EstoquePage: React.FC = () => {
                 type="number"
                 label="Capacidade do Tanque (L)"
                 value={novoVeiculo.capacidadeTanque}
-                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, capacidadeTanque: e.target.value })}
+                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, capacidadeTanque: parseFloat(e.target.value) || 0 })}
                 inputProps={{ step: 0.1, min: 0 }}
               />
             </Grid>
@@ -534,7 +540,7 @@ const EstoquePage: React.FC = () => {
                 type="number"
                 label="Consumo Médio (km/L)"
                 value={novoVeiculo.consumoMedio}
-                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, consumoMedio: e.target.value })}
+                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, consumoMedio: parseFloat(e.target.value) || 0 })}
                 inputProps={{ step: 0.1, min: 0 }}
               />
             </Grid>
@@ -543,8 +549,8 @@ const EstoquePage: React.FC = () => {
                 fullWidth
                 type="number"
                 label="Valor da Diária (R$)"
-                value={novoVeiculo.valorDiaria}
-                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, valorDiaria: e.target.value })}
+                value={novoVeiculo.preco_diario}
+                onChange={(e) => setNovoVeiculo({ ...novoVeiculo, preco_diario: parseFloat(e.target.value) || 0 })}
                 inputProps={{ step: 0.01, min: 0 }}
                 required
               />

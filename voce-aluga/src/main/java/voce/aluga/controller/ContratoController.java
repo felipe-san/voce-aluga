@@ -56,4 +56,24 @@ public class ContratoController {
     public float aplicarDesconto(@PathVariable int id, @RequestParam float valor) {
         return contratoService.aplicarDesconto(id, valor);
     }
+
+    @PutMapping("/{id}/status")
+    public void atualizarStatus(@PathVariable int id, @RequestParam String status) {
+        contratoService.atualizarStatus(id, status);
+    }
+
+    @PostMapping("/{id}/ativar")
+    public void ativarContrato(@PathVariable int id) {
+        contratoService.ativarContrato(id);
+    }
+
+    @PostMapping("/{id}/concluir")
+    public void concluirContrato(@PathVariable int id) {
+        contratoService.concluirContrato(id);
+    }
+
+    @PostMapping("/{id}/cancelar")
+    public void cancelarContrato(@PathVariable int id) {
+        contratoService.cancelarContrato(id);
+    }
 }

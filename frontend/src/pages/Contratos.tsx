@@ -47,11 +47,14 @@ const Contratos: React.FC = () => {
   
   const [novoContrato, setNovoContrato] = useState({
     clienteId: '',
-    veiculoNome: '', // Mudei de veiculoId para veiculoNome
+    veiculoId: '',
+    veiculoNome: '',
     dataInicio: '',
     dataFim: '',
+    valor: '',
     valorTotal: '',
     desconto: '',
+    status: 'ATIVO',
     formaPagamento: '',
   });
 
@@ -147,11 +150,14 @@ const Contratos: React.FC = () => {
     setOpenModal(false);
     setNovoContrato({
       clienteId: '',
+      veiculoId: '',
       veiculoNome: '',
       dataInicio: '',
       dataFim: '',
+      valor: '',
       valorTotal: '',
       desconto: '',
+      status: 'ATIVO',
       formaPagamento: '',
     });
   };
@@ -160,11 +166,14 @@ const Contratos: React.FC = () => {
     setContratoSelecionado(contrato);
     setNovoContrato({
       clienteId: contrato.clienteId?.toString() || '',
+      veiculoId: contrato.veiculoId?.toString() || '',
       veiculoNome: `Veículo ID: ${contrato.veiculoId}`, // Usar um placeholder já que não temos o nome
       dataInicio: contrato.dataInicio || '',
       dataFim: contrato.dataFim || '',
+      valor: '',
       valorTotal: contrato.valorTotal?.toString() || '',
       desconto: contrato.desconto?.toString() || '',
+      status: contrato.status || 'ATIVO',
       formaPagamento: contrato.formaPagamento || '',
     });
     setOpenEditModal(true);
@@ -177,11 +186,14 @@ const Contratos: React.FC = () => {
     setContratoSelecionado(null);
     setNovoContrato({
       clienteId: '',
+      veiculoId: '',
       veiculoNome: '',
       dataInicio: '',
       dataFim: '',
+      valor: '',
       valorTotal: '',
       desconto: '',
+      status: 'ATIVO',
       formaPagamento: '',
     });
   };

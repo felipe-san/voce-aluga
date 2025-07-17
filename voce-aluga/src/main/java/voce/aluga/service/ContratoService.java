@@ -52,4 +52,23 @@ public class ContratoService {
         }
         return 0;
     }
+
+    public void atualizarStatus(int id, String status) {
+        contratoRepository.findById(id).ifPresent(contrato -> {
+            contrato.setStatus(status);
+            contratoRepository.save(contrato);
+        });
+    }
+
+    public void ativarContrato(int id) {
+        atualizarStatus(id, "ATIVO");
+    }
+
+    public void concluirContrato(int id) {
+        atualizarStatus(id, "CONCLUIDO");
+    }
+
+    public void cancelarContrato(int id) {
+        atualizarStatus(id, "CANCELADO");
+    }
 }

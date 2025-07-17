@@ -1,11 +1,14 @@
-import api from './api';
 import { Contrato } from '../types';
 
 export const contratoService = {
   listarTodos: async () => {
     try {
-      const response = await api.get<Contrato[]>('/contratos');
-      return response;
+      const response = await fetch('http://localhost:8081/contratos');
+      if (response.ok) {
+        const data = await response.json();
+        return { data };
+      }
+      throw new Error('Erro ao buscar contratos');
     } catch (error) {
       console.error('Erro ao listar contratos:', error);
       throw error;
@@ -14,8 +17,12 @@ export const contratoService = {
 
   buscarPorId: async (id: number) => {
     try {
-      const response = await api.get<Contrato>(`/contratos/${id}`);
-      return response;
+      const response = await fetch(`http://localhost:8081/contratos/${id}`);
+      if (response.ok) {
+        const data = await response.json();
+        return { data };
+      }
+      throw new Error('Contrato não encontrado');
     } catch (error) {
       console.error('Erro ao buscar contrato por ID:', error);
       throw error;
@@ -24,8 +31,18 @@ export const contratoService = {
 
   criar: async (contrato: Omit<Contrato, 'id'>) => {
     try {
-      const response = await api.post<Contrato>('/contratos', contrato);
-      return response;
+      const response = await fetch('http://localhost:8081/contratos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contrato),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return { data };
+      }
+      throw new Error('Erro ao criar contrato');
     } catch (error) {
       console.error('Erro ao criar contrato:', error);
       throw error;
@@ -34,8 +51,18 @@ export const contratoService = {
 
   atualizar: async (id: number, contrato: Partial<Contrato>) => {
     try {
-      const response = await api.put<Contrato>(`/contratos/${id}`, contrato);
-      return response;
+      const response = await fetch(`http://localhost:8081/contratos/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contrato),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return { data };
+      }
+      throw new Error('Erro ao atualizar contrato');
     } catch (error) {
       console.error('Erro ao atualizar contrato:', error);
       throw error;
@@ -44,8 +71,13 @@ export const contratoService = {
 
   deletar: async (id: number) => {
     try {
-      const response = await api.delete(`/contratos/${id}`);
-      return response;
+      const response = await fetch(`http://localhost:8081/contratos/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        return { data: null };
+      }
+      throw new Error('Erro ao deletar contrato');
     } catch (error) {
       console.error('Erro ao deletar contrato:', error);
       throw error;
@@ -54,8 +86,12 @@ export const contratoService = {
 
   buscarPorCliente: async (clienteId: number) => {
     try {
-      const response = await api.get<Contrato[]>(`/contratos?clienteId=${clienteId}`);
-      return response;
+      const response = await fetch(`http://localhost:8081/contratos?clienteId=${clienteId}`);
+      if (response.ok) {
+        const data = await response.json();
+        return { data };
+      }
+      throw new Error('Erro ao buscar contratos por cliente');
     } catch (error) {
       console.error('Erro ao buscar contratos por cliente:', error);
       throw error;
@@ -64,8 +100,12 @@ export const contratoService = {
 
   buscarPorStatus: async (status: string) => {
     try {
-      const response = await api.get<Contrato[]>(`/contratos?status=${status}`);
-      return response;
+      const response = await fetch(`http://localhost:8081/contratos?status=${status}`);
+      if (response.ok) {
+        const data = await response.json();
+        return { data };
+      }
+      throw new Error('Erro ao buscar contratos por status');
     } catch (error) {
       console.error('Erro ao buscar contratos por status:', error);
       throw error;

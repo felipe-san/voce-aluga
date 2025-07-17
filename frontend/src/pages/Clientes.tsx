@@ -35,13 +35,13 @@ const Clientes: React.FC = () => {
   const [editingCliente, setEditingCliente] = useState<Cliente | null>(null);
   const [formData, setFormData] = useState<Partial<Cliente>>({
     nome: '',
-    email: '',
-    endereco: '',
-    documento: '',
     cpf: '',
+    email: '',
+    telefone: '',
+    endereco: '',
     cnh: '',
-    fidelidade: '0',
-    listaSuja: false,
+    dataNascimento: '',
+    dataCadastro: new Date().toISOString().split('T')[0],
   });
 
   useEffect(() => {
@@ -98,13 +98,13 @@ const Clientes: React.FC = () => {
   const resetForm = () => {
     setFormData({
       nome: '',
-      email: '',
-      endereco: '',
-      documento: '',
       cpf: '',
+      email: '',
+      telefone: '',
+      endereco: '',
       cnh: '',
-      fidelidade: '0',
-      listaSuja: false,
+      dataNascimento: '',
+      dataCadastro: new Date().toISOString().split('T')[0],
     });
   };
 
@@ -148,9 +148,8 @@ const Clientes: React.FC = () => {
                 <TableCell>Nome</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>CPF</TableCell>
+                <TableCell>Telefone</TableCell>
                 <TableCell>CNH</TableCell>
-                <TableCell>Fidelidade</TableCell>
-                <TableCell>Status</TableCell>
                 <TableCell>Ações</TableCell>
               </TableRow>
             </TableHead>
@@ -160,15 +159,8 @@ const Clientes: React.FC = () => {
                   <TableCell>{cliente.nome}</TableCell>
                   <TableCell>{cliente.email}</TableCell>
                   <TableCell>{cliente.cpf}</TableCell>
-                <TableCell>{cliente.cnh}</TableCell>
-                <TableCell>{cliente.fidelidade} pontos</TableCell>
-                <TableCell>
-                  <Chip
-                    label={cliente.listaSuja ? 'Lista Suja' : 'Regular'}
-                    color={cliente.listaSuja ? 'error' : 'success'}
-                    size="small"
-                  />
-                </TableCell>
+                  <TableCell>{cliente.telefone}</TableCell>
+                  <TableCell>{cliente.cnh}</TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleEdit(cliente)} color="primary">
                     <EditIcon />
@@ -218,6 +210,14 @@ const Clientes: React.FC = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
+                label="Telefone"
+                value={formData.telefone}
+                onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
                 label="CNH"
                 value={formData.cnh}
                 onChange={(e) => setFormData({ ...formData, cnh: e.target.value })}
@@ -226,9 +226,11 @@ const Clientes: React.FC = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Documento"
-                value={formData.documento}
-                onChange={(e) => setFormData({ ...formData, documento: e.target.value })}
+                label="Data de Nascimento"
+                type="date"
+                value={formData.dataNascimento}
+                onChange={(e) => setFormData({ ...formData, dataNascimento: e.target.value })}
+                InputLabelProps={{ shrink: true }}
               />
             </Grid>
             <Grid item xs={12}>

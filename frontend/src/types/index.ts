@@ -5,12 +5,18 @@ export interface Usuario {
   endereco: string;
 }
 
-export interface Cliente extends Usuario {
-  documento: string;
-  fidelidade: string;
-  listaSuja: boolean;
+export interface Cliente {
+  id?: number;
+  nome: string;
   cpf: string;
+  email: string;
+  telefone: string;
+  endereco: string;
   cnh: string;
+  dataNascimento: string;
+  dataCadastro: string;
+  usuarioId?: number;
+  status?: string;
 }
 
 export interface Contrato {
@@ -19,8 +25,11 @@ export interface Contrato {
   veiculoId: number;
   dataInicio: string;
   dataFim: string;
+  dataAssinatura?: string;
+  valor: number;
   valorTotal: number;
-  status?: string | null;
+  termos?: string;
+  status: string;
   desconto?: number;
   formaPagamento?: string;
 }
@@ -29,40 +38,53 @@ export interface Veiculo {
   id?: number;
   modelo: string;
   marca: string;
-  ano: string; // Pode ser Date no backend, mas vamos usar string para simplicidade
   placa: string;
-  cor: string;
+  ano: number;
+  status: string;
   quilometragem?: number;
   capacidadeTanque?: number;
-  consumoMedio?: number;
   dataProximaManutencao?: string;
-  historicoManutencao?: string;
-  status?: string;
+  consumoMedio?: number;
+  grupoVeiculo?: number;
+  filialId?: number;
+  cor: string;
+  categoria: string;
+  preco_diario: number;
+  km_atual?: number;
   disponivel: boolean;
   valorDiaria: number;
-  categoria: string;
-  localizacao?: 'ESTOQUE' | 'LOCADORA'; // Nova propriedade para controlar onde está o veículo
+  localizacao?: string;
 }
 
-export interface Administrador extends Usuario {
+export interface Administrador {
+  id?: number;
+  nome: string;
+  email: string;
+  endereco: string;
   cargo: string;
   nivel: string;
 }
 
 export interface Estoque {
   id?: number;
+  filialId: number;
+  totalVeiculos: number;
   veiculoId: number;
   quantidade: number;
   localizacao: string;
+  veiculosDisponiveis?: number[];
+  veiculosManutencao?: number[];
+  veiculosAlocados?: number[];
+  veiculosAlugados?: number[];
 }
 
 export interface Devolucao {
   id?: number;
-  contratoId: number;
-  dataDevolucao: string;
-  condicaoVeiculo: string;
-  taxasAdicionais?: number;
-  observacoes?: string;
+  veiculoId: number;
+  reservaId: number;
+  status: string;
+  avarias: boolean;
+  anotacoes?: string;
 }
 
 export interface Auditoria {

@@ -25,8 +25,11 @@ import {
   CheckCircle,
   Cancel,
   FilterList,
-  Download
+  Download,
+  PlayArrow,
+  Refresh
 } from '@mui/icons-material';
+import statusService from '../../services/statusService';
 
 interface HistoricoItem {
   id: number;
@@ -38,7 +41,7 @@ interface HistoricoItem {
   };
   dataInicio: string;
   dataFim: string;
-  status: 'concluida' | 'cancelada';
+  status: 'ativo' | 'concluida' | 'cancelada';
   valorTotal: number;
   valorDiario: number;
   diasAluguel: number;
@@ -50,6 +53,7 @@ const ClienteHistorico: React.FC = () => {
   const [filtroStatus, setFiltroStatus] = useState('todos');
   const [filtroAno, setFiltroAno] = useState('todos');
   const [loading, setLoading] = useState(true);
+  const [inicializandoStatus, setInicializandoStatus] = useState(false);
 
   useEffect(() => {
     loadHistorico();
@@ -57,8 +61,100 @@ const ClienteHistorico: React.FC = () => {
 
   const loadHistorico = async () => {
     try {
+      // Tentar buscar contratos do cliente logado
+      const response = await fetch('http://localhost:8081/contratos', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const contratos = await response.json();
+        
+        // Buscar detalhes dos veículos
+        const veiculosResponse = await fetch('http://localhost:8081/api/veiculos');
+        const veiculos = veiculosResponse.ok ? await veiculosResponse.json() : [];
+
+        // Converter contratos para formato do histórico
+        const historicoConvertido: HistoricoItem[] = contratos.map((contrato: any) => {
+          const veiculo = veiculos.find((v: any) => v.id === contrato.veiculoId);
+          const dataInicio = new Date(contrato.dataInicio);
+          const dataFim = new Date(contrato.dataFim);
+          const diasAluguel = Math.ceil((dataFim.getTime() - dataInicio.getTime()) / (1000 * 60 * 60 * 24));
+          
+          // Usar status do banco ou determinar baseado nas datas se não houver
+          let statusContrato = 'concluida'; // default
+          if (contrato.status) {
+            // Mapear status do backend para o frontend
+            switch (contrato.status.toLowerCase()) {
+              case 'ativo':
+              case 'em_andamento':
+                statusContrato = 'ativo';
+                break;
+              case 'concluido':
+              case 'encerrado':
+              case 'finalizado':
+                statusContrato = 'concluida';
+                break;
+              case 'cancelado':
+                statusContrato = 'cancelada';
+                break;
+              default:
+                // Se não reconhecer o status, usar lógica de data
+                const hoje = new Date();
+                const isPassado = dataFim < hoje;
+                statusContrato = isPassado ? 'concluida' : 'ativo';
+            }
+          } else {
+            // Se não houver status no banco, usar lógica de data
+            const hoje = new Date();
+            const isPassado = dataFim < hoje;
+            statusContrato = isPassado ? 'concluida' : 'ativo';
+          }
+          
+          return {
+            id: contrato.id,
+            veiculo: {
+              modelo: veiculo?.modelo || 'Modelo não encontrado',
+              marca: veiculo?.marca || 'Marca não encontrada',
+              placa: veiculo?.placa || 'Placa não encontrada',
+              ano: veiculo?.ano || new Date().getFullYear()
+            },
+            dataInicio: contrato.dataInicio,
+            dataFim: contrato.dataFim,
+            status: statusContrato as 'ativo' | 'concluida' | 'cancelada',
+            valorDiario: contrato.valor || (contrato.valorTotal / diasAluguel) || 0,
+            diasAluguel,
+            valorTotal: contrato.valorTotal || 0,
+            avaliacao: Math.floor(Math.random() * 5) + 1 // Avaliação simulada
+          };
+        });
+
+        setHistorico(historicoConvertido);
+      } else {
+        // Se a API falhar, usar dados simulados
+        throw new Error('API não disponível');
+      }
+    } catch (error) {
+      console.error('Erro ao carregar histórico:', error);
       // Dados simulados - em produção viriam da API
       const mockHistorico: HistoricoItem[] = [
+        {
+          id: 0,
+          veiculo: {
+            modelo: 'Corolla',
+            marca: 'Toyota',
+            placa: 'ABC-1234',
+            ano: 2023
+          },
+          dataInicio: '2024-07-10',
+          dataFim: '2024-07-20',
+          status: 'ativo',
+          valorDiario: 120,
+          diasAluguel: 10,
+          valorTotal: 1200
+        },
         {
           id: 1,
           veiculo: {
@@ -140,8 +236,6 @@ const ClienteHistorico: React.FC = () => {
         }
       ];
       setHistorico(mockHistorico);
-    } catch (error) {
-      console.error('Erro ao carregar histórico:', error);
     } finally {
       setLoading(false);
     }
@@ -149,6 +243,7 @@ const ClienteHistorico: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
+      case 'ativo': return 'primary';
       case 'concluida': return 'success';
       case 'cancelada': return 'error';
       default: return 'default';
@@ -157,6 +252,7 @@ const ClienteHistorico: React.FC = () => {
 
   const getStatusLabel = (status: string) => {
     switch (status) {
+      case 'ativo': return 'Em Andamento';
       case 'concluida': return 'Concluída';
       case 'cancelada': return 'Cancelada';
       default: return status;
@@ -165,9 +261,10 @@ const ClienteHistorico: React.FC = () => {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
+      case 'ativo': return <PlayArrow />;
       case 'concluida': return <CheckCircle />;
       case 'cancelada': return <Cancel />;
-      default: return null;
+      default: return <CheckCircle />; // ícone padrão em vez de null
     }
   };
 
@@ -190,9 +287,11 @@ const ClienteHistorico: React.FC = () => {
   const calcularEstatisticas = () => {
     const historicoFiltrado = filtrarHistorico();
     const concluidas = historicoFiltrado.filter(item => item.status === 'concluida');
+    const ativos = historicoFiltrado.filter(item => item.status === 'ativo');
     
     return {
       totalAlugueis: historicoFiltrado.length,
+      totalAtivos: ativos.length,
       totalConcluidos: concluidas.length,
       totalCancelados: historicoFiltrado.filter(item => item.status === 'cancelada').length,
       valorTotal: concluidas.reduce((sum, item) => sum + item.valorTotal, 0),
@@ -225,6 +324,20 @@ const ClienteHistorico: React.FC = () => {
     window.URL.revokeObjectURL(url);
   };
 
+  const inicializarStatusContratos = async () => {
+    try {
+      setInicializandoStatus(true);
+      await statusService.inicializarStatusContratos();
+      await loadHistorico(); // Recarregar dados após atualização
+      alert('Status dos contratos inicializados com sucesso!');
+    } catch (error) {
+      console.error('Erro ao inicializar status:', error);
+      alert('Erro ao inicializar status dos contratos.');
+    } finally {
+      setInicializandoStatus(false);
+    }
+  };
+
   if (loading) {
     return <Typography>Carregando...</Typography>;
   }
@@ -241,13 +354,24 @@ const ClienteHistorico: React.FC = () => {
         <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
           Histórico de Aluguéis
         </Typography>
-        <Button
-          variant="outlined"
-          startIcon={<Download />}
-          onClick={exportarDados}
-        >
-          Exportar
-        </Button>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button
+            variant="contained"
+            startIcon={<Refresh />}
+            onClick={inicializarStatusContratos}
+            disabled={inicializandoStatus}
+            color="primary"
+          >
+            {inicializandoStatus ? 'Inicializando...' : 'Inicializar Status'}
+          </Button>
+          <Button
+            variant="outlined"
+            startIcon={<Download />}
+            onClick={exportarDados}
+          >
+            Exportar
+          </Button>
+        </Box>
       </Box>
 
       {/* Cards de Estatísticas */}
@@ -259,6 +383,17 @@ const ClienteHistorico: React.FC = () => {
               <Typography variant="h6">{stats.totalAlugueis}</Typography>
               <Typography variant="body2" color="text.secondary">
                 Total
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={2}>
+          <Card elevation={2}>
+            <CardContent sx={{ textAlign: 'center' }}>
+              <PlayArrow color="primary" sx={{ fontSize: 30, mb: 1 }} />
+              <Typography variant="h6">{stats.totalAtivos}</Typography>
+              <Typography variant="body2" color="text.secondary">
+                Em Andamento
               </Typography>
             </CardContent>
           </Card>
@@ -338,6 +473,7 @@ const ClienteHistorico: React.FC = () => {
                 onChange={(e) => setFiltroStatus(e.target.value)}
               >
                 <MenuItem value="todos">Todos</MenuItem>
+                <MenuItem value="ativo">Em Andamento</MenuItem>
                 <MenuItem value="concluida">Concluídos</MenuItem>
                 <MenuItem value="cancelada">Cancelados</MenuItem>
               </TextField>
